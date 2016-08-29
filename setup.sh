@@ -20,3 +20,4 @@ brew install fasd
 brew install ag
 brew install jq
 brew install aria2
+brew install bash-git-prompt

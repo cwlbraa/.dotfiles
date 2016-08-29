@@ -13,6 +13,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # install nvim
 brew install nvim/nvim/nvim
+ln -s .vimrc .nvimrc
+ln -s .vim .nvim
 
 # command line utilities
 brew install git

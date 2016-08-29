@@ -18,7 +18,7 @@ export CLICOLOR=1
 alias gst='git status'
 
 # git autocomplete
-source ~/.dotfiles/.git-completion.bash
+source ~/.dotfiles/git-completion.bash
 
 # install bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then

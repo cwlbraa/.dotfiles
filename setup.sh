@@ -12,7 +12,7 @@ ln -s $dir/.gitconfig ~/.gitconfig
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # install nvim
-brew install nvim/nvim/nvim
+brew install neovim/neovim/neovim
 ln -s .vimrc .nvimrc
 ln -s .vim .nvim
 

@@ -3,3 +3,6 @@
 	ci = commit
 	br = branch
 	co = checkout
+[user]
+	name = Connor Braa
+	email = connor.braa@gmail.com

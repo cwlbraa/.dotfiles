@@ -2,3 +2,4 @@
 source $HOME/.config/nvim/plugins.vimrc
 source $HOME/.config/nvim/bindings.vimrc
 source $HOME/.config/nvim/general.vimrc
+source $HOME/.config/nvim/colors.vim

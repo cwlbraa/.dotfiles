@@ -44,9 +44,6 @@ call plug#begin('~/.vim/plugged')
 
   " Better whitespace highlighting for Vim
   Plug 'ntpeters/vim-better-whitespace'
-
-  " Toggle the cursor shape in the terminal for Vim.
-  Plug 'jszakmeister/vim-togglecursor'
 " }}}
 
 " Commands {{{

@@ -42,12 +42,6 @@ nnoremap <leader>C :FZFColors<cr>
 set pastetoggle=<F6>
 map <F6> :set invpaste<CR>:set paste?<CR>
 
-" Edit vimrc with ,vi
-nmap <silent> <leader>vi :e ~/.vim/vimrc<CR>
-nmap <silent> <leader>vb :e ~/.vimrc.local.before<CR>
-nmap <silent> <leader>vl :e ~/.vimrc.local<CR>
-nmap <silent> <leader>vp :e ~/.vimrc.local.plugins<CR>
-
 nnoremap j gj
 nnoremap k gk
 " }}}

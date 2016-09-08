@@ -4,6 +4,7 @@
 	br = branch
 	co = checkout
 	sur = submodule update --init --recursive --jobs=7
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [user]
 	name = Connor Braa
 	email = cbraa@lytro.com

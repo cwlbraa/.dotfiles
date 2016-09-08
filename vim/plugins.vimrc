@@ -31,7 +31,6 @@ call plug#begin('~/.vim/plugged')
   " Colors {{{
     Plug 'dolio/vim-hybrid'
     Plug 'morhetz/gruvbox'
-    Plug 'chriskempson/base16-vim'
     Plug 'flazz/vim-colorschemes'
   " }}}
 
@@ -76,9 +75,6 @@ call plug#begin('~/.vim/plugged')
   " asynchronous build and test dispatcher
   Plug 'tpope/vim-dispatch'
 
-  " Syntax checking hacks for vim
-  Plug 'benekastah/neomake'
-
   " Functions to toggle the [Location List] and the [Quickfix List] windows.
   Plug 'milkypostman/vim-togglelist'
 
@@ -103,6 +99,11 @@ call plug#begin('~/.vim/plugged')
    " provides an asynchronous keyword completion system in the current buffer
    Plug 'Shougo/deoplete.nvim'
 
+   " syntax checking?
+   " Plug 'scrooloose/syntastic'
+   " let g:syntastic_cpp_compiler = 'clang++'
+   " let g:syntastic_cpp_compiler_options = ' -nostdinc++ -Wall -Werror -Wformat -Wno-unused-variable -Wno-unused-parameter -Wno-strict-aliasing -Wno-variadic-macros -D_m_to_int64=_mm_cvtm64_si64 -Wno-unknown-warning-option -Wno-gnu-designator -Wno-expansion-to-defined -Wno-unused -Wno-unused-function -Wno-unused-parameter -Wno-unused-value -Wno-parentheses-equality -Wno-deprecated-register -Wno-unknown-pragmas -Wno-tautological-compare -Wno-unused-private-field -std=c++11 -mssse3 -mavx2 -O3 -g -fPIC -DUSEMMAPALLOC -DGL_GLEXT_PROTOTYPES -DENABLE_LIBSERIAL -D_LIDAR_LIVE_VIEW '
+
    " Speed up Vim by updating folds only when called-for.
    let g:fastfold_savehook = 0
    let g:fastfold_fold_command_suffixes = []
@@ -122,7 +123,7 @@ call plug#begin('~/.vim/plugged')
 
   " A solid language pack for Vim.
   " Adds 70+ languages and optimizes loading and installing.
-  Plug 'sheerun/vim-polyglot'
+    Plug 'sheerun/vim-polyglot'
 " }}}
 
 call plug#end()

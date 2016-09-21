@@ -124,6 +124,8 @@ call plug#begin('~/.vim/plugged')
   " A solid language pack for Vim.
   " Adds 70+ languages and optimizes loading and installing.
     Plug 'sheerun/vim-polyglot'
+    let g:cpp_class_scope_highlight = 1
+    let g:cpp_experimental_template_highlight = 1
 " }}}
 
 call plug#end()

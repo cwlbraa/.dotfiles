@@ -3,7 +3,7 @@
 " ----------------------------------------
 
 " filetypes
-autocmd BufNewFile,BufRead *.cppt,   set syntax=cpp
+autocmd BufNewFile,BufRead *.cppt,*.ht,   set syntax=cpp
 
 " Config {{{
 if has('persistent_undo')

@@ -1,7 +1,10 @@
+#!/bin/bash
+
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 
 # neovim setup
 alias vim=nvim
+export EDITOR=nvim
 
 # fasd init
 eval "$(fasd --init auto)"
@@ -30,3 +33,5 @@ fi
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

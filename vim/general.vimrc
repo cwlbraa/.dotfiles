@@ -43,7 +43,7 @@ set autowriteall       " Writes on make/shell commands
 set foldlevel=20
 set formatoptions=crql
 set iskeyword+=$,@,-     " Add extra characters that are valid parts of variables
-set tags=./tags;/,tags;/
+" set tags=./tags;/,tags;/ // conflicts with fugitive
 set splitright
 if version >= 704
   set completeopt=menu,noinsert,noselect

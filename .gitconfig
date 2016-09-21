@@ -5,6 +5,9 @@
 	co = checkout
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ctags = !.git/hooks/ctags
 [user]
 	name = Connor Braa
 	email = cbraa@lytro.com
+[init]
+	templatedir = ~/.dotfiles/git_template

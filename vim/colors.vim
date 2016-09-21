@@ -3,8 +3,8 @@ let &t_Co=256
 let g:base16_shell_path=$HOME.'/.vim/scripts/base16-shell/scripts'
 
 let s:colors = [
-      \ 'hybrid',
       \ 'gruvbox',
+      \ 'hybrid',
       \ ]
 
 function! colors#_change(index)
@@ -73,7 +73,7 @@ else
 endif
 
 try
-  colorscheme hybrid
+  colorscheme gruvbox
 catch
   colorscheme evening
 endtry

@@ -1,4 +1,4 @@
 #!/bin/sh
 case "$1" in
-  rebase) exec `dirname $0`/post-merge ;;
+	rebase) exec $(git rev-parse --git-dir)/hooks/post-merge ;;
 esac

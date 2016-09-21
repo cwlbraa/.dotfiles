@@ -43,11 +43,15 @@ set autowriteall       " Writes on make/shell commands
 set foldlevel=20
 set formatoptions=crql
 set iskeyword+=$,@,-     " Add extra characters that are valid parts of variables
-" set tags=./tags;/,tags;/ // conflicts with fugitive
 set splitright
 if version >= 704
   set completeopt=menu,noinsert,noselect
 endif
+" }}}
+
+" C++ {{{
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 " }}}
 
 " Text Format {{{
@@ -60,7 +64,8 @@ set expandtab
 set ignorecase
 set smartcase  " Non-case sensitive search
 set hlsearch
-set wildignore+=.final_builds/*,*/node_modules/*,*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class,*.scssc,*/Godeps/*
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+set wildignore+=.final_builds/*,*/node_modules/*,*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.sass-cache,*.class,*.scssc,*/Godeps/*
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m

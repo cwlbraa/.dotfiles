@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Defaults {{{
   Plug 'tpope/vim-sensible'
+  call plug#load('vim-sensible') " allows these settings to be overwritten by other plugins
 " }}}
 
 " Navigation {{{
@@ -53,9 +54,11 @@ call plug#begin('~/.vim/plugged')
   " quoting/parenthesizing made simple; e.g. ysiw) to wrap word in parens
   Plug 'tpope/vim-surround'
 
+  " git changes in gutter
+  Plug 'airblade/vim-gitgutter'
+
   " a Git wrapper so awesome, it should be illegal; :Gblame, etc
   Plug 'tpope/vim-fugitive'
-  Plug 'airblade/vim-gitgutter'
 
   " easily search for, substitute, and abbreviate multiple variants of a word
   Plug 'tpope/vim-abolish'
@@ -124,8 +127,6 @@ call plug#begin('~/.vim/plugged')
   " A solid language pack for Vim.
   " Adds 70+ languages and optimizes loading and installing.
     Plug 'sheerun/vim-polyglot'
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_experimental_template_highlight = 1
 " }}}
 
 call plug#end()

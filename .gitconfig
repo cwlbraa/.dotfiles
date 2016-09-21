@@ -5,7 +5,7 @@
 	co = checkout
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	ctags = !.git/hooks/ctags
+	ctags = !$(git rev-parse --git-dir)/hooks/ctags
 [user]
 	name = Connor Braa
 	email = cbraa@lytro.com

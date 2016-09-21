@@ -30,3 +30,6 @@ brew install ag
 brew install jq
 brew install aria2
 brew install bash-git-prompt
+
+brew tap universal-ctags/universal-ctags
+brew install universal-ctags/universal-ctags

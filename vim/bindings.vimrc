@@ -34,10 +34,12 @@ nnoremap <C-p>     :FZFFiles<cr>
 nnoremap <leader>f :FZFFiles<cr>
 nnoremap <leader>m :FZFHistory<cr>
 nnoremap <leader>F :FZFBTags<cr>
-nnoremap <leader>S :FZFTags<cr>
+nnoremap <leader>t :FZFTags<cr>
 nnoremap <leader>L :FZFBLines<cr>
 nnoremap <leader>b :FZFBuffers<cr>
 nnoremap <leader>C :FZFColors<cr>
+
+nmap <C-\> :TagbarToggle<CR>
 
 set pastetoggle=<F6>
 map <F6> :set invpaste<CR>:set paste?<CR>

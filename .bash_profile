@@ -35,3 +35,7 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		source ~/.iterm2_shell_integration.`basename $SHELL`
+fi

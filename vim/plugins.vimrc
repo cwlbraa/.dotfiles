@@ -62,6 +62,12 @@ call plug#begin('~/.vim/plugged')
 
   " easily search for, substitute, and abbreviate multiple variants of a word
   Plug 'tpope/vim-abolish'
+  "
+  " incremental search highlighting is the swaggiest swag
+  Plug 'haya14busa/incsearch.vim'
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
 
   " Vim sugar for the UNIX shell commands that need it the most; e.g. :Find, :Wall
   Plug 'tpope/vim-eunuch'

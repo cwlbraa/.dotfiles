@@ -7,14 +7,11 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 " Navigation {{{
-  " Displays tags in a window, ordered by scope
-  Plug 'majutsushi/tagbar'
-
   " A tree explorer plugin for vim
   Plug 'scrooloose/nerdtree'
-  "
-  " project configuration via 'projections'
-  Plug 'tpope/vim-projectionist'
+
+  " Displays tags in a window, ordered by scope
+  Plug 'majutsushi/tagbar'
 
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'
@@ -23,9 +20,13 @@ call plug#begin('~/.vim/plugged')
 
   " Active fork of kien/ctrlp.vim. Fuzzy file, buffer, mru, tag, etc finder.
   Plug 'ctrlpvim/ctrlp.vim'
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
   " Fast vim CtrlP matcher based on python
   Plug 'FelikZ/ctrlp-py-matcher'
+
+  " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
+  Plug 'maxbrunsfeld/vim-emacs-bindings'
 " }}}
 
 " UI Additions {{{
@@ -50,35 +51,22 @@ call plug#begin('~/.vim/plugged')
 
   " comment stuff out (via leader-/)
   Plug 'tpope/vim-commentary'
-
   " quoting/parenthesizing made simple; e.g. ysiw) to wrap word in parens
   Plug 'tpope/vim-surround'
+  " easily search for, substitute, and abbreviate multiple variants of a word
+  Plug 'tpope/vim-abolish'
+  " Vim sugar for the UNIX shell commands that need it the most; e.g. :Find, :Wall
+  Plug 'tpope/vim-eunuch'
 
-  " git changes in gutter
-  Plug 'airblade/vim-gitgutter'
 
   " a Git wrapper so awesome, it should be illegal; :Gblame, etc
   Plug 'tpope/vim-fugitive'
+  " git changes in gutter
+  Plug 'airblade/vim-gitgutter'
 
-  " easily search for, substitute, and abbreviate multiple variants of a word
-  Plug 'tpope/vim-abolish'
-  "
+
   " incremental search highlighting is the swaggiest swag
   Plug 'haya14busa/incsearch.vim'
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  set hlsearch
-  let g:incsearch#auto_nohlsearch = 1
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
-
-  " Vim sugar for the UNIX shell commands that need it the most; e.g. :Find, :Wall
-  Plug 'tpope/vim-eunuch'
 
   " Run a command over every entry in the quickfix list (:Cdo) or location list (:Ldo).
   Plug 'Peeja/vim-cdo'
@@ -89,15 +77,8 @@ call plug#begin('~/.vim/plugged')
   " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
   Plug 'rking/ag.vim'
 
-  " asynchronous build and test dispatcher
-  Plug 'tpope/vim-dispatch'
-
   " Functions to toggle the [Location List] and the [Quickfix List] windows.
   Plug 'milkypostman/vim-togglelist'
-
-  " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
-  Plug 'maxbrunsfeld/vim-emacs-bindings'
-
 " }}}
 
 " Automatic Helpers {{{
@@ -109,9 +90,6 @@ call plug#begin('~/.vim/plugged')
 
   " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
   Plug 'tpope/vim-sleuth'
-
-  " pairs of handy bracket mappings; e.g. [<Space> and ]<Space> add newlines before and after the cursor line
-  Plug 'tpope/vim-unimpaired'
 
    " provides an asynchronous keyword completion system in the current buffer
    Plug 'Shougo/deoplete.nvim'
@@ -126,9 +104,6 @@ call plug#begin('~/.vim/plugged')
    let g:fastfold_fold_command_suffixes = []
    let g:fastfold_fold_movement_commands = []
    Plug 'Konfekt/FastFold'
-
-   " Provide easy code formatting in Vim by integrating existing code formatters.
-   Plug 'Chiel92/vim-autoformat'
 " }}}
 
 " Language specific {{{

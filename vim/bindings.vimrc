@@ -48,6 +48,20 @@ nnoremap j gj
 nnoremap k gk
 " }}}
 
+" incsearch {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" }}}
+
 " Common typos {{{
 command! W w
 command! Q q
@@ -99,15 +113,9 @@ nnoremap <leader>. :A<cr>
 
 " {{{ File Jumping
 "Move back and forth through previous and next buffers
-"with ,z and ,x
+"with ,z and ,
 nnoremap <silent> <leader>z :bp<CR>
 nnoremap <silent> <leader>x :bn<CR>
-" }}}
-
-" Spelling {{{
-" Toggle spelling mode with ,s
-nmap <silent> <leader>ss :set spell!<CR>
-nmap <silent> <leader>sf :QuickSpellingFix<CR>
 " }}}
 
 " Window {{{

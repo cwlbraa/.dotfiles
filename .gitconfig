@@ -11,3 +11,7 @@
 	email = cbraa@lytro.com
 [init]
 	templatedir = ~/.dotfiles/git_template
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
+[merge]
+	tool = fugitive

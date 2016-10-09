@@ -36,8 +36,8 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-		source ~/.iterm2_shell_integration.`basename $SHELL`
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 
 # don't put duplicate lines or lines starting with space in the history.

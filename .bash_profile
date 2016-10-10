@@ -52,4 +52,4 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 # do this last because fzf, git-bash-prompt, iterm, etc, muck with $PROMPT_COMMAND
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -r;"
+PROMPT_COMMAND="$PROMPT_COMMAND; history -a;"

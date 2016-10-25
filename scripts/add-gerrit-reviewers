@@ -1,0 +1,29 @@
+#!/bin/bash
+OWNER=${OWNER:-$(whoami)}
+PROJECT=${PROJECT:-$(basename `git rev-parse --show-toplevel`)}
+BRANCH=${BRANCH:-master}
+RESTRICT=${RESTRICT:-yes}
+# -status:submitted label:Code-Review=0 -label:Verified=-1 -label:Code-Review=-1 -label:Code-Review=-2
+GERRITS=$(ssh gerrithost gerrit query --current-patch-set -- project:$PROJECT owner:$OWNER is:open branch:$BRANCH | grep "revision:" | tr -d ' ' | cut -d ':' -f 2)
+
+for G in $GERRITS; do
+    #echo git branch --contains=$G
+    if [[ "$RESTRICT" != "yes" ]] || [[ $(git cat-file -t $G 2>/dev/null) == "commit" ]]; then
+        CMD="ssh gerrithost gerrit set-reviewers $G --add Trillion_Core_Reviewers"
+
+        if [[ "$RESTRICT" == "yes" ]]; then
+            git branch --contains=$G | grep '^*' >/dev/null
+            if [[ "$?" != "0" ]]; then
+                echo "Skipping $G since it is not part of the current history"
+            else
+                echo $CMD
+                $CMD
+            fi
+        else
+            echo $CMD
+            $CMD
+        fi
+    else
+        echo "Commit $G not in current repository"
+    fi
+done

@@ -89,7 +89,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
 
   " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
-  Plug 'tpope/vim-sleuth'
+  " Plug 'tpope/vim-sleuth'
 
    " provides an asynchronous keyword completion system in the current buffer
    Plug 'Shougo/deoplete.nvim'

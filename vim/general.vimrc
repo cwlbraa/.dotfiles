@@ -55,8 +55,9 @@ let g:cpp_class_scope_highlight = 1
 " }}}
 
 " Text Format {{{
-set tabstop=2
-set shiftwidth=2 " Tabs under smart indent
+set tabstop=6
+set shiftwidth=4 " Tabs under smart indent
+set softtabstop=4 " Tabs under smart indent
 set expandtab
 " }}}
 

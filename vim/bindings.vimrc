@@ -63,11 +63,14 @@ command! W w
 command! Q q
 command! WQ wq
 command! Wq wq
+command! Wqa wqa
+command! Qa qa
 imap jk <Esc>
 map <F1> <Esc>
 imap <F1> <Esc>
 " Removes doc lookup binding because it's easy to fat finger
 
+" hold down control and use directions to change splits
 nnoremap <silent> <C-l> <c-w>l
 nnoremap <silent> <C-h> <c-w>h
 nnoremap <silent> <C-k> <c-w>k

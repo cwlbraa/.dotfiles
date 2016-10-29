@@ -2,10 +2,6 @@
 " Bindings
 " ----------------------------------------
 
-" Note: This line MUST come before any <leader> mappings
-let g:mapleader=","
-let g:maplocalleader = "-"
-
 " nerdtree remaps
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap \ :NERDTreeToggle<CR>
@@ -103,8 +99,10 @@ nmap <leader>v :view %%
 nnoremap <leader><leader> <c-^>
 " }}}
 
-" Switch between test and production code {{{
-nnoremap <leader>. :A<cr>
+" switch between cpp and header or test and prod {{{
+nnoremap <leader>a :A<cr>
+nnoremap <leader>h :AS<cr>
+nnoremap <leader>g :IH<cr>
 " }}}
 
 " ---------------

@@ -13,6 +13,9 @@ call plug#begin('~/.vim/plugged')
   " Displays tags in a window, ordered by scope
   Plug 'majutsushi/tagbar'
 
+  " goto header and other nice shit
+  Plug 'vim-scripts/a.vim'
+
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

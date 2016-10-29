@@ -7,6 +7,10 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+" Note: This line MUST come before any <leader> mappings
+let g:mapleader=","
+let g:maplocalleader = "-"
+
 " load the rest of the config
 source $HOME/.config/nvim/plugins.vimrc
 source $HOME/.config/nvim/bindings.vimrc

@@ -61,14 +61,22 @@ map g# <Plug>(incsearch-nohl-g#)
 " Common typos {{{
 command! W w
 command! Q q
+command! Qa qa
+command! QA qa
 command! WQ wq
 command! Wq wq
 command! Wqa wqa
-command! Qa qa
-imap jk <Esc>
+command! WQa wqa
+command! WQA wqa
+command! Vs vs
+
+" its all about that key repeat
+imap jjj <Esc>
+imap kkk <Esc>
+
+" Remove doc lookup binding because it's easy to fat finger
 map <F1> <Esc>
 imap <F1> <Esc>
-" Removes doc lookup binding because it's easy to fat finger
 
 " hold down control and use directions to change splits
 nnoremap <silent> <C-l> <c-w>l

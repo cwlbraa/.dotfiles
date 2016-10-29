@@ -104,7 +104,10 @@ nnoremap <leader><leader> <c-^>
 
 " switch between cpp and header or test and prod {{{
 nnoremap <leader>a :A<cr>
-nnoremap <leader>h :AS<cr>
+nnoremap <leader>A :AS<cr>
+" }}}
+
+" goto file under cursor {{{
 nnoremap <leader>g :IH<cr>
 " }}}
 
@@ -126,12 +129,7 @@ nmap <silent> <leader>w= :wincmd =<CR>
 " Swap Windows
 nmap <silent> <leader>wx :wincmd x<CR>
 
-" Window Splitting
-nmap <silent> <leader>hs :split<CR>
-nmap <silent> <leader>vs :vsplit<CR>
-nmap <silent> <leader>sc :close<CR>
-" }}}
-
 " Other {{{
 map <leader>Y :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%")<CR>
 map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
+" }}}

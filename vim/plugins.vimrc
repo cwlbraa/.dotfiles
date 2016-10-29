@@ -15,6 +15,8 @@ call plug#begin('~/.vim/plugged')
 
   " goto header and other nice shit
   Plug 'vim-scripts/a.vim'
+  let g:alternateNoDefaultAlternate = 1
+  let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:|src/\([^/]*\)|include/\1||'
 
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'

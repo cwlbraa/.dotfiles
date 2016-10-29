@@ -6,7 +6,8 @@
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ctags = !$(git rev-parse --git-dir)/hooks/ctags
-	rio = rebase -i --autosquash origin/master
+	rebase = rebase --autosquash
+	rio = rebase --autosquash -i origin/master
 	pgm = "!git push gerrit HEAD:refs/for/master; ~/.dotfiles/scripts/add-gerrit-reviewers"
 	fu = commit --fixup
 [user]

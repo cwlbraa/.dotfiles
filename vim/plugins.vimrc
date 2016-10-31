@@ -13,10 +13,10 @@ call plug#begin('~/.vim/plugged')
   " Displays tags in a window, ordered by scope
   Plug 'majutsushi/tagbar'
 
-  " goto header and other nice shit
+  " :A to swap between header and impl
   Plug 'vim-scripts/a.vim'
   let g:alternateNoDefaultAlternate = 1
-  let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:|src/\([^/]*\)|include/\1||'
+  let g:alternateSearchPath = 'reg:|src/\([^/]*\)|include/\1||,sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
 
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'

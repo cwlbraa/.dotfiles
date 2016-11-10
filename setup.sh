@@ -16,7 +16,8 @@ ln -sf $dir/.gitconfig ~/.gitconfig
 PATH="$HOME/.linuxbrew/bin:$PATH"
 
 # install nvim
-brew install neovim/neovim/neovim
+if ! brew install neovim/neovim/neovim
+    then echo "neovim depends on gperf"; fi
 
 # verify this works when there's already shit here...
 rm -rf ~/.config/nvim

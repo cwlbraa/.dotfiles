@@ -50,6 +50,7 @@ HISTFILESIZE=20000
 # do this last because fzf, git-bash-prompt, iterm, etc, muck with $PROMPT_COMMAND
 PROMPT_COMMAND="$PROMPT_COMMAND; history -a;"
 
+# do this extra last because other changes to te prompt can clobber it
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi

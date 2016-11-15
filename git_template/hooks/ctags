@@ -4,5 +4,5 @@ PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
-  ctags -V --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql
+  ctags -V --tag-relative -L - -f"$dir/$$.tags" --extra=+q --fields=+ialS --c++-kinds=+p --languages=-javascript,sql,html,css,fortran,json
 mv "$dir/$$.tags" "$dir/tags"

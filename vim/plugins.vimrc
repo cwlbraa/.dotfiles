@@ -40,16 +40,23 @@ call plug#begin('~/.vim/plugged')
   " lean & mean status/tabline for vim that's light as air
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
 
   " Better whitespace highlighting for Vim
   Plug 'ntpeters/vim-better-whitespace'
+  " detect indent and set buffer options
+  Plug 'tpope/vim-sleuth'
+  " visible tabs
+  set listchars=tab:>-
+  set list
 
   " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
   Plug 'luochen1990/rainbow'
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
   let g:rainbow_conf = {
-  \   'operators': '_,\|=\|+\|\*\|-\|\.\|;\||\|&\|?\|:\|<\|>\|%\|<<\|>>_',
-  \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+  \   'operators': '_,\|=\|+\|\*\|-\|\.\|;\||\|&\|?\|:\|<\|>\|%\|<<\|>>\|!_',
+  \   'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
   \   'separately': {
   \       '*': {},
   \       'cpp': {

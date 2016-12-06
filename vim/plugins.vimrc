@@ -25,6 +25,9 @@ call plug#begin('~/.vim/plugged')
 
   " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
   Plug 'maxbrunsfeld/vim-emacs-bindings'
+
+  " open filename:lineno
+  Plug 'bogado/file-line'
 " }}}
 
 " UI Additions {{{

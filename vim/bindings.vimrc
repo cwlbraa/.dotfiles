@@ -2,6 +2,9 @@
 " Bindings
 " ----------------------------------------
 
+"make neovim terminal useful
+" tnoremap <Esc> <C-\><C-n>
+
 " nerdtree remaps
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap \ :NERDTreeToggle<CR>

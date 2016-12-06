@@ -5,6 +5,9 @@
 " filetypes
 autocmd BufNewFile,BufRead *.cppt,*.ht,   set syntax=cpp
 
+" the big hax
+nnoremap ; :
+
 " Config {{{
 if has('persistent_undo')
   set undofile
@@ -49,11 +52,6 @@ if version >= 704
 endif
 " }}}
 
-" C++ {{{
-let g:cpp_class_scope_highlight = 1
-" let g:cpp_experimental_template_highlight = 1
-" }}}
-
 " Text Format {{{
 set tabstop=6
 set shiftwidth=4 " Tabs under smart indent
@@ -69,6 +67,9 @@ set wildignore+=.final_builds/*,*/node_modules/*,*.o,*.obj,*.exe,*.so,*.dll,*.py
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
+endif
+if exists('&inccommand')
+  set inccommand=split
 endif
 " }}}
 
@@ -86,8 +87,21 @@ set mousehide  " Hide mouse after chars typed
 set mouse=a  " Mouse in all modes
 " }}}
 
-" deoplete {{{
+" relative line numbers {{{
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
 
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+" }}}
+
+" deoplete {{{
 let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#omni_patterns = {}

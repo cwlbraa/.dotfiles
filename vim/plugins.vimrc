@@ -94,16 +94,12 @@ call plug#begin('~/.vim/plugged')
 
 
   " a Git wrapper so awesome, it should be illegal; :Gblame, etc
-  Plug 'tpope/vim-fugitive'
+  Plug 'cwlbraa/vim-fugitive' " my version has submodule-ctags hacked into it
   " git changes in gutter
   Plug 'airblade/vim-gitgutter'
 
-
   " incremental search highlighting is the swaggiest swag
   Plug 'haya14busa/incsearch.vim'
-
-  " Run a command over every entry in the quickfix list (:Cdo) or location list (:Ldo).
-  Plug 'Peeja/vim-cdo'
 
   " Vim script for text filtering and alignment; e.g. :Tabularize /,
   Plug 'godlygeek/tabular'

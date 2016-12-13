@@ -115,16 +115,11 @@ call plug#begin('~/.vim/plugged')
   " enable repeating supported plugin maps with '.'
   Plug 'tpope/vim-repeat'
 
-  " automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
-  " Plug 'tpope/vim-sleuth'
-
    " provides an asynchronous keyword completion system in the current buffer
    Plug 'Shougo/deoplete.nvim'
-
-   " syntax checking?
-   " Plug 'scrooloose/syntastic'
-   " let g:syntastic_cpp_compiler = 'clang++'
-   " let g:syntastic_cpp_compiler_options = ' -nostdinc++ -Wall -Werror -Wformat -Wno-unused-variable -Wno-unused-parameter -Wno-strict-aliasing -Wno-variadic-macros -D_m_to_int64=_mm_cvtm64_si64 -Wno-unknown-warning-option -Wno-gnu-designator -Wno-expansion-to-defined -Wno-unused -Wno-unused-function -Wno-unused-parameter -Wno-unused-value -Wno-parentheses-equality -Wno-deprecated-register -Wno-unknown-pragmas -Wno-tautological-compare -Wno-unused-private-field -std=c++11 -mssse3 -mavx2 -O3 -g -fPIC -DUSEMMAPALLOC -DGL_GLEXT_PROTOTYPES -DENABLE_LIBSERIAL -D_LIDAR_LIVE_VIEW '
+   Plug 'Shougo/neopairs.vim'
+   let g:deoplete#omni_input_patterns = {}
+   let g:deoplete#omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
    " Speed up Vim by updating folds only when called-for.
    let g:fastfold_savehook = 0

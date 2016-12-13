@@ -106,9 +106,6 @@ call plug#begin('~/.vim/plugged')
 
   " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
   Plug 'rking/ag.vim'
-
-  " Functions to toggle the [Location List] and the [Quickfix List] windows.
-  Plug 'milkypostman/vim-togglelist'
 " }}}
 
 " Automatic Helpers {{{

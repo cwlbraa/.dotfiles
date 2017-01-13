@@ -15,6 +15,12 @@ ln -sf $dir/.gitconfig ~/.gitconfig
 #ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 PATH="$HOME/.linuxbrew/bin:$PATH"
 
+# install rust toolchain
+curl https://sh.rustup.rs -sSf | sh
+# fast simd ag
+cargo install ripgrep
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # install nvim
 if ! brew install neovim/neovim/neovim
     then echo "neovim depends on gperf"; fi
@@ -27,7 +33,6 @@ ln -s $dir/vim ~/.config/nvim
 # command line utilities
 brew install git
 brew install fasd
-brew install ag
 brew install jq
 brew install aria2
 brew install bash-git-prompt

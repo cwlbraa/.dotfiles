@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # neovim setup
 alias vim=nvim
@@ -20,6 +21,7 @@ export CLICOLOR=1
 
 # aliases
 alias gst='git status'
+alias g='rg'
 
 # git autocomplete
 source ~/.dotfiles/git-completion.bash
@@ -30,6 +32,8 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# populates v v fast
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

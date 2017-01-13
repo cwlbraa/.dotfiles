@@ -64,7 +64,10 @@ set ignorecase
 set smartcase  " Non-case sensitive search
 set hlsearch
 set wildignore+=.final_builds/*,*/node_modules/*,*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.sass-cache,*.class,*.scssc,*/Godeps/*
-if executable('ag')
+if executable('rg')
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+elseif executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
 endif

@@ -104,7 +104,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
 
   " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
-  Plug 'rking/ag.vim'
+  Plug 'Numkil/ag.nvim'
+  let g:ag_prg="rg --vimgrep --smart-case"
 " }}}
 
 " Automatic Helpers {{{

@@ -37,7 +37,6 @@ nnoremap <leader>C :FZFColors<cr>
 
 nmap <C-\> :TagbarToggle<CR>
 
-xnoremap <expr> p 'pgv''.v:register.'y'
 set pastetoggle=<F6>
 map <F6> :set invpaste<CR>:set paste?<CR>
 

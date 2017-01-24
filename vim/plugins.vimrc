@@ -135,6 +135,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'godoctor/godoctor.vim'
   " }}}
 
+  " Rust {{{
+    Plug 'rust-lang/rust.vim'
+    let g:rustfmt_autosave = 1
+    Plug 'sebastianmarkow/deoplete-rust'
+    let g:deoplete#sources#rust#racer_binary='/home/cbraa/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/home/cbraa/ws/rust/rust/src'
+  " }}}
+
   " A solid language pack for Vim.
   " Adds 70+ languages and optimizes loading and installing.
     Plug 'sheerun/vim-polyglot'

@@ -180,6 +180,9 @@ command! -bang -nargs=* Rg
     Plug 'sebastianmarkow/deoplete-rust'
     let g:deoplete#sources#rust#racer_binary='/home/cbraa/.cargo/bin/racer'
     let g:deoplete#sources#rust#rust_source_path='/home/cbraa/ws/rust/rust/src'
+    Plug 'neomake/neomake'
+    let g:neomake_ft_maker_remove_invalid_entries = 0
+    autocmd BufWritePost *.rs Neomake! cargo
   " }}}
 
   " A solid language pack for Vim.

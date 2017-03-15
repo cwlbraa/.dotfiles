@@ -20,6 +20,25 @@ call plug#begin('~/.vim/plugged')
   let g:fzf_command_prefix = 'FZF'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
   " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
   Plug 'maxbrunsfeld/vim-emacs-bindings'
@@ -104,7 +123,7 @@ call plug#begin('~/.vim/plugged')
 
   " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
   Plug 'Numkil/ag.nvim'
-  let g:ag_prg="rg --vimgrep --smart-case"
+  let g:ag_prg="rg --vimgrep --no-heading --smart-case"
 " }}}
 
 " Automatic Helpers {{{

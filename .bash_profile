@@ -23,6 +23,9 @@ export CLICOLOR=1
 alias gst='git status'
 alias g='rg'
 
+type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
+type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
+
 # git autocomplete
 source ~/.dotfiles/git-completion.bash
 

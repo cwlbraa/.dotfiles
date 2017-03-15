@@ -45,6 +45,9 @@ command! -bang -nargs=* Rg
 
   " open filename:lineno
   Plug 'bogado/file-line'
+
+  " run a command in a terminal split
+  Plug 'vimlab/split-term.vim'
 " }}}
 
 " UI Additions {{{

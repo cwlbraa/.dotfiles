@@ -3,7 +3,9 @@
 " ----------------------------------------
 
 " filetypes
-autocmd BufNewFile,BufRead *.cppt,*.ht,   set syntax=cpp
+autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set syntax=cpp
+autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set filetype=cpp
+autocmd BufNewFile,BufRead *.mkt,         set filetype=make
 
 " the big hax
 nnoremap ; :

@@ -10,7 +10,11 @@ call plug#begin('~/.vim/plugged')
 
   " :A to swap between header and impl
   Plug 'vim-scripts/a.vim'
-  let g:alternateSearchPath = 'reg:|src|include|g|,reg:|include|src|g|,sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
+  let g:alternateExtensions_ht = "cppt"
+  let g:alternateExtensions_cppt = "ht"
+  let g:alternateRelativeFiles = 1
+  let g:alternateSearchPath = 'reg:|include|src,sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
+  let g:alternateNoDefaultAlternate = 1
 
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'

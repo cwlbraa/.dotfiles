@@ -129,7 +129,7 @@ command! -bang -nargs=* Rg
 
 
   " a Git wrapper so awesome, it should be illegal; :Gblame, etc
-  Plug 'cwlbraa/vim-fugitive' " my version has submodule-ctags hacked into it
+  Plug 'tpope/vim-fugitive' " my version has submodule-ctags hacked into it
   " git changes in gutter
   Plug 'airblade/vim-gitgutter'
 

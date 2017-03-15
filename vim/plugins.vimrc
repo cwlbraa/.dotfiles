@@ -1,11 +1,6 @@
 " plugins
 call plug#begin('~/.vim/plugged')
 
-" Defaults {{{
-  Plug 'tpope/vim-sensible'
-  call plug#load('vim-sensible') " allows these settings to be overwritten by other plugins
-" }}}
-
 " Navigation {{{
   " A tree explorer plugin for vim
   Plug 'scrooloose/nerdtree'

@@ -37,11 +37,11 @@ endfunction
 nnoremap <C-p>     :FZFFiles<cr>
 nnoremap <leader>f :FZFFiles<cr>
 nnoremap <leader>m :FZFHistory<cr>
-nnoremap <leader>F :FZFBTags<cr>
+nnoremap <leader>T :FZFBTags<cr>
 nnoremap <leader>t :FZFTags<cr>
+nnoremap <leader>l :FZFLines<cr>
 nnoremap <leader>L :FZFBLines<cr>
 nnoremap <leader>b :FZFBuffers<cr>
-nnoremap <leader>C :FZFColors<cr>
 
 nmap <C-\> :TagbarToggle<CR>
 

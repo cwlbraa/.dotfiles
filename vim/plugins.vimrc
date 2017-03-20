@@ -8,13 +8,19 @@ call plug#begin('~/.vim/plugged')
   " Displays tags in a window, ordered by scope
   Plug 'majutsushi/tagbar'
 
-  " :A to swap between header and impl
-  Plug 'vim-scripts/a.vim'
-  let g:alternateExtensions_ht = "cppt"
-  let g:alternateExtensions_cppt = "ht"
-  let g:alternateRelativeFiles = 1
-  let g:alternateSearchPath = 'reg:|include|src,sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
-  let g:alternateNoDefaultAlternate = 1
+  " <leader>a to swap between header and impl
+  Plug 'vim-scripts/FSwitch'
+  " {{{
+  nmap <silent> <leader>a :FSHere<cr>
+  augroup mycppfiles
+    au!
+    au BufEnter *.h let b:fswitchdst  = 'cpp,cc,C'
+    au BufEnter *.h let b:fswitchlocs = 'reg:|include|src|,reg:|include.*|src/**|'
+    au BufEnter *.cpp let b:fswitchdst  = 'h'
+    au BufEnter *.cpp let b:fswitchlocs = 'reg:|src|include|,reg:|src.*|include/**|'
+  augroup END
+  " }}}
+
 
   " A command-line fuzzy finder written in Go
   let g:fzf_command_prefix = 'FZF'

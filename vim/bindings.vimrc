@@ -118,11 +118,6 @@ nmap <leader>v :view %%
 nnoremap <leader><leader> <c-^>
 " }}}
 
-" switch between cpp and header or test and prod {{{
-nnoremap <leader>a :A<cr>
-nnoremap <leader>A :AS<cr>
-" }}}
-
 " goto file under cursor {{{
 nnoremap <leader>g :IH<cr>
 " }}}

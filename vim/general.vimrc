@@ -92,20 +92,6 @@ set mousehide  " Hide mouse after chars typed
 set mouse=a  " Mouse in all modes
 " }}}
 
-" relative line numbers {{{
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
-    set number
-  else
-    set rnu
-  endif
-endfunc
-
-" Toggle between normal and relative numbering.
-nnoremap <leader>r :call NumberToggle()<cr>
-" }}}
-
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
 

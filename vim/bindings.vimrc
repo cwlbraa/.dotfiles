@@ -42,6 +42,7 @@ nnoremap <leader>t :FZFTags<cr>
 nnoremap <leader>l :FZFLines<cr>
 nnoremap <leader>L :FZFBLines<cr>
 nnoremap <leader>b :FZFBuffers<cr>
+nnoremap <leader>r :FZFRg<cr>
 
 nmap <C-\> :TagbarToggle<CR>
 

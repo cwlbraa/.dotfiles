@@ -39,9 +39,9 @@ call plug#begin('~/.vim/plugged')
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-command! -bang -nargs=* Rg
+  command! -bang -nargs=* FZFRg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading -u --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -150,7 +150,7 @@ command! -bang -nargs=* Rg
 
   " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
   Plug 'Numkil/ag.nvim'
-  let g:ag_prg="rg --vimgrep --no-heading --smart-case"
+  let g:ag_prg="rg --vimgrep --no-heading --smart-case -u"
 " }}}
 
 " Automatic Helpers {{{

@@ -38,6 +38,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # populates v v fast
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_R_OPTS='--sort'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

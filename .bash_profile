@@ -22,6 +22,7 @@ export CLICOLOR=1
 # aliases
 alias gst='git status'
 alias g='rg'
+alias cleanswap='rm -rf /var/tmp/*.swp'
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'

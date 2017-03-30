@@ -18,6 +18,10 @@ call plug#begin('~/.vim/plugged')
     au BufEnter *.h let b:fswitchlocs = 'reg:|include|src|,reg:|include.*|src/**|'
     au BufEnter *.cpp let b:fswitchdst  = 'h'
     au BufEnter *.cpp let b:fswitchlocs = 'reg:|src|include|,reg:|src.*|include/**|'
+    au BufEnter *.ht let b:fswitchdst  = 'cppt'
+    au BufEnter *.ht let b:fswitchlocs = 'reg:|include|src|,reg:|include.*|src/**|'
+    au BufEnter *.cppt let b:fswitchdst  = 'ht'
+    au BufEnter *.cppt let b:fswitchlocs = 'reg:|src|include|,reg:|src.*|include/**|'
   augroup END
   " }}}
 

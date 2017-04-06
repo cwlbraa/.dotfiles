@@ -39,22 +39,33 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" 
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 
-# load up antigen
-source $ZDOT_DIR/antigen.zsh
-antigen use oh-my-zsh
-# antigen theme bira
-antigen theme bhilburn/powerlevel9k powerlevel9k
+
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯ "
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle sudo
-antigen bundle colored-man-pages
-antigen bundle copydir
-antigen bundle copyfile
-antigen bundle fasd
 
-antigen apply
+# antigen cache load
+if ! [[ -f ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
+    # If there is no cache available do load and execute antigen
+    source $ZDOT_DIR/antigen.zsh
 
+    antigen use oh-my-zsh
+    antigen theme bhilburn/powerlevel9k powerlevel9k
+    antigen bundle git
+    antigen bundle command-not-found
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle sudo
+    antigen bundle colored-man-pages
+    antigen bundle copydir
+    antigen bundle copyfile
+
+    antigen apply
+else
+# if there's cache available
+    # Load bundles statically
+    source ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload
+
+    # You will need to call compinit
+    autoload -Uz compinit
+    compinit -d ${HOME}/.zcompdump
+fi

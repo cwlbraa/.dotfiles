@@ -9,6 +9,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -sf $dir/.bash_profile ~/.bash_profile
 ln -sf $dir/.gitconfig ~/.gitconfig
 ln -sf $dir/zsh/zshrc ~/.zshrc
+mkdir -p ~/.config/terminator/ # obvi unnecessary on mac but whatever
+ln -sf $dir/terminator/config ~/.config/terminator/
 
 # install brew of some kind
 # OSX: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -37,6 +39,7 @@ brew install fasd
 brew install jq
 brew install aria2
 brew install bash-git-prompt
+# we could add zsh here later if it seems like a good idea...
 
 brew tap universal-ctags/universal-ctags
 brew install universal-ctags/universal-ctags

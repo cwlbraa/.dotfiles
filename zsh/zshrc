@@ -9,16 +9,6 @@ while [ -h "$SOURCE" ]; do
 done
 ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-# load up antigen
-source $ZDOT_DIR/antigen.zsh
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme bira
-
-antigen apply
-
 # path extensions for brew and cargo
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -43,16 +33,28 @@ type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 
 # fasd init
 eval "$(fasd --init auto)"
-# there doesn't appear to be a world wherein fzf works reasonably within zsh
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# # populates v v fast
-# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-# export FZF_CTRL_R_OPTS='--sort'
-
 
 # do this extra last because other changes to te prompt can clobber it
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 
+# load up antigen
+source $ZDOT_DIR/antigen.zsh
+antigen use oh-my-zsh
+# antigen theme bira
+antigen theme bhilburn/powerlevel9k powerlevel9k
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯ "
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle sudo
+antigen bundle colored-man-pages
+antigen bundle copydir
+antigen bundle copyfile
+antigen bundle fasd
+
+antigen apply
 

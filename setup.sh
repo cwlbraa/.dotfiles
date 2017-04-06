@@ -8,6 +8,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # link up git dotfiles to home dotfiles
 ln -sf $dir/.bash_profile ~/.bash_profile
 ln -sf $dir/.gitconfig ~/.gitconfig
+ln -sf $dir/zsh/zshrc ~/.zshrc
 
 # install brew of some kind
 # OSX: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

@@ -1,0 +1,58 @@
+# zsh setup, modified from ~/.bash_profile
+
+# get directory this script is in
+SOURCE=${(%):-%N}
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# load up antigen
+source $ZDOT_DIR/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme bira
+
+antigen apply
+
+# path extensions for brew and cargo
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# neovim setup
+alias vim=nvim
+export EDITOR=nvim
+
+# up arrow readline completion
+echo '# arrow up
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward' > ~/.inputrc
+
+# aliases
+alias gst='git status'
+alias g='rg'
+alias cleanswap='rm -rf /var/tmp/*.swp'
+
+type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
+type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
+
+# fasd init
+eval "$(fasd --init auto)"
+# there doesn't appear to be a world wherein fzf works reasonably within zsh
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# # populates v v fast
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# export FZF_CTRL_R_OPTS='--sort'
+
+
+# do this extra last because other changes to te prompt can clobber it
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    source ~/.iterm2_shell_integration.`basename $SHELL`
+fi
+
+

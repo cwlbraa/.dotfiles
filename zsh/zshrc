@@ -37,10 +37,13 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" 
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 
-
+### antigen and related config {{{
+# reloads antigen bundles and re-caches them
+alias antireset="source $ZDOT_DIR/antigen.zsh && antigen reset && zsh"
+# config for fancy prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯ "
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯❯❯ "
 
 # antigen cache load
 if ! [[ -f ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
@@ -48,7 +51,7 @@ if ! [[ -f ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
     source $ZDOT_DIR/antigen.zsh
 
     antigen use oh-my-zsh
-    antigen theme bhilburn/powerlevel9k powerlevel9k
+    antigen theme bhilburn/powerlevel9k powerlevel9k # fantastic with a bit of config
     antigen bundle git
     antigen bundle command-not-found
     antigen bundle zsh-users/zsh-syntax-highlighting
@@ -56,6 +59,7 @@ if ! [[ -f ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
     antigen bundle colored-man-pages
     antigen bundle copydir
     antigen bundle copyfile
+    antigen bundle ubuntu
 
     antigen apply
 else

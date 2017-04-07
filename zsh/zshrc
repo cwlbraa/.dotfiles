@@ -24,8 +24,6 @@ echo '# arrow up
 "\e[B":history-search-forward' > ~/.inputrc
 
 # aliases
-alias gst='git status'
-alias g='rg'
 alias cleanswap='rm -rf /var/tmp/*.swp'
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'

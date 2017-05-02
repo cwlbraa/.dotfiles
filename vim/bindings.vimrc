@@ -13,6 +13,9 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " nnoremap <A-k> <C-w>k
 " nnoremap <A-l> <C-w>l
 
+" clang format with ctrl-k works real good in visual mode hopefully?
+map <C-K> :pyf /usr/share/clang/clang-format-3.8/clang-format.py<cr>
+
 " nerdtree remaps
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap \ :NERDTreeToggle<CR>

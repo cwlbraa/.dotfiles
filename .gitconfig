@@ -20,5 +20,5 @@
 	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
 	tool = fugitive
-[rerere]
-	enabled = true
+[core]
+	trustctime = false

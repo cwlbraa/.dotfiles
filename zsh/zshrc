@@ -1,4 +1,6 @@
 # zsh setup, modified from ~/.bash_profile
+#
+export TERM=xterm-256color
 
 # get directory this script is in
 SOURCE=${(%):-%N}
@@ -32,47 +34,34 @@ type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 # fasd init
 eval "$(fasd --init auto)"
 
-# do this extra last because other changes to te prompt can clobber it
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-    source ~/.iterm2_shell_integration.`basename $SHELL`
-fi
-
 ### antigen and related config {{{
-# reloads antigen bundles and re-caches them
-alias antireset="source $ZDOT_DIR/antigen.zsh && antigen reset && zsh"
 # config for fancy prompt
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯❯❯ "
+source $ZDOT_DIR/antigen/antigen.zsh
 
-# antigen cache load
-if ! [[ -f ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload ]]; then
-    # If there is no cache available do load and execute antigen
-    source $ZDOT_DIR/antigen.zsh
+export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+export POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n\e[1D"
+export POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="❯❯❯ "
+export POWERLEVEL9K_INSTALLATION_PATH="$ADOTDIR/bundles/bhilburn/powerlevel9k/"
 
-    antigen use oh-my-zsh
-    antigen theme bhilburn/powerlevel9k powerlevel9k # fantastic with a bit of config
-    antigen bundle git
-    antigen bundle command-not-found
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle sudo
-    antigen bundle colored-man-pages
-    antigen bundle copydir
-    antigen bundle copyfile
-    antigen bundle ubuntu
+antigen use oh-my-zsh
+antigen theme bhilburn/powerlevel9k powerlevel9k # fantastic with a bit of config
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle sudo
+antigen bundle colored-man-pages
+antigen bundle copydir
+antigen bundle copyfile
+antigen bundle ubuntu
 
-    antigen apply
-else
-# if there's cache available
-    # Load bundles statically
-    source ${ADOTDIR:-$HOME/.antigen}/.cache/.zcache-payload
-
-    # You will need to call compinit
-    autoload -Uz compinit
-    compinit -d ${HOME}/.zcompdump
-fi
+antigen apply
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_R_OPTS='--sort'
+
+# do this extra last because other changes to te prompt can clobber it
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    source ~/.iterm2_shell_integration.`basename $SHELL`
+fi
 

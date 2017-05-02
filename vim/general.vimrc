@@ -34,9 +34,9 @@ set noshowmode     " don't need to show mode since we have airline
 set numberwidth=4
 set encoding=utf-8
 set guioptions=acg
-set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 set cursorline
 set lazyredraw
+set guicursor=
 " }}}
 
 " Behaviors {{{

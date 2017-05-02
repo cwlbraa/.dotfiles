@@ -147,7 +147,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
 
   " incremental search highlighting is the swaggiest swag
-  Plug 'haya14busa/incsearch.vim'
+  " Plug 'haya14busa/incsearch.vim'
 
   " Vim script for text filtering and alignment; e.g. :Tabularize /,
   Plug 'godlygeek/tabular'

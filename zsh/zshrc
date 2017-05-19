@@ -27,6 +27,7 @@ echo '# arrow up
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
+alias cleankernels='dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs sudo apt-get -y purge'
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'

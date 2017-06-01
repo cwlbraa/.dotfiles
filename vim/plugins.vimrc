@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+  let g:fzf_layout = { 'down': '~15%' }
 
   " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
   Plug 'maxbrunsfeld/vim-emacs-bindings'

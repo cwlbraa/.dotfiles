@@ -25,18 +25,18 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" function! s:buflist()
+"   redir => ls
+"   silent ls
+"   redir END
+"   return split(ls, '\n')
+" endfunction
+
+" function! s:bufopen(e)
+"   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+" endfunction
+
 " fzf remaps
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
 nnoremap <C-p>     :FZFFiles<cr>
 nnoremap <leader>f :FZFFiles<cr>
 nnoremap <leader>m :FZFHistory<cr>

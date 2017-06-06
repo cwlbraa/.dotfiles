@@ -3,12 +3,13 @@
 	ci = commit
 	br = branch
 	co = checkout
+	cp = cherry-pick
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ctags = !$(git rev-parse --git-dir)/hooks/ctags
 	rebase = rebase --autosquash
-	rio = rebase --autosquash -i origin/master
-	pgm = "!git push gerrit HEAD:refs/for/master; ~/.dotfiles/scripts/add-gerrit-reviewers"
+	rio = "!git rebase --autosquash -i origin/$(git rev-parse --abbrev-ref HEAD)"
+	pg = "!git push gerrit HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD); ~/.dotfiles/scripts/add-gerrit-reviewers"
 	fu = commit --fixup
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]

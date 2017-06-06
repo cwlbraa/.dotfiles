@@ -193,7 +193,7 @@ call plug#begin('~/.vim/plugged')
     let g:deoplete#sources#rust#rust_source_path='/home/cbraa/ws/rust/rust/src'
     Plug 'neomake/neomake'
     let g:neomake_ft_maker_remove_invalid_entries = 0
-    autocmd BufWritePost *.rs Neomake! cargo
+    autocmd BufWritePost *.rs Neomake cargo
   " }}}
 
   " A solid language pack for Vim.

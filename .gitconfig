@@ -6,9 +6,11 @@
 	cp = cherry-pick
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lo = "!git --no-pager log --graph --decorate --pretty=oneline --abbrev-commit --all -n10"
 	ctags = !$(git rev-parse --git-dir)/hooks/ctags
 	rebase = rebase --autosquash
 	rio = "!git rebase --autosquash -i origin/$(git rev-parse --abbrev-ref HEAD)"
+	riom = rebase --autosquash -i origin/master
 	pg = "!git push gerrit HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD); ~/.dotfiles/scripts/add-gerrit-reviewers"
 	fu = commit --fixup
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'

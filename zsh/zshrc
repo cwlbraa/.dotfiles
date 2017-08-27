@@ -15,6 +15,9 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+source $HOME/.linuxbrew/opt/chruby/share/chruby/chruby.sh
+source $HOME/.linuxbrew/opt/chruby/share/chruby/auto.sh
+
 # neovim setup
 alias vim=nvim
 export EDITOR=nvim
@@ -62,3 +65,18 @@ export FZF_CTRL_R_OPTS='--sort'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
+
+export PATH=$PATH:$HOME/ws/trillion/tce/build/bin/
+export PATH=$PATH:/usr/lib/go/bin
+export GOROOT=/usr/lib/go/
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/cbraa/ws/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cbraa/ws/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/cbraa/ws/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cbraa/ws/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+export PATH="/usr/lib/ccache:$PATH"

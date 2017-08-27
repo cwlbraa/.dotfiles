@@ -39,6 +39,7 @@ brew install fasd
 brew install jq
 brew install aria2
 brew install bash-git-prompt
+brew install chruby
 # we could add zsh here later if it seems like a good idea...
 
 brew tap universal-ctags/universal-ctags

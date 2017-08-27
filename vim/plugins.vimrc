@@ -24,6 +24,8 @@ call plug#begin('~/.vim/plugged')
     au BufEnter *.cppt let b:fswitchlocs = 'reg:|src|include|,reg:|src.*|include/**|'
   augroup END
   " }}}
+  " COLORS
+  Plug 'vim-scripts/AnsiEsc.vim'
 
 
   " A command-line fuzzy finder written in Go
@@ -50,6 +52,8 @@ call plug#begin('~/.vim/plugged')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
   let g:fzf_layout = { 'down': '~15%' }
+  " automatically exit fzf when it loses focus
+  autocmd BufLeave *#FZF :bd!
 
   " Add emacs/bash/cocoa key bindings to vim, in insert and command-line modes.
   Plug 'maxbrunsfeld/vim-emacs-bindings'
@@ -153,9 +157,12 @@ call plug#begin('~/.vim/plugged')
   " Vim script for text filtering and alignment; e.g. :Tabularize /,
   Plug 'godlygeek/tabular'
 
-  " Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module / CLI script 'ack'
-  Plug 'Numkil/ag.nvim'
-  let g:ag_prg="rg --vimgrep --no-heading --smart-case -u"
+  Plug 'mhinz/vim-grepper'
+  command! -nargs=* -complete=tag Ag Grepper -noprompt -tool rg -query <args>
+  command! -nargs=0 -complete=tag Aw Grepper -noprompt -tool rg -cword
+  command! -nargs=* -complete=tag Agu Grepper -noprompt -tool rg -grepprg rg --vimgrep -u -query <args>
+  command! -nargs=0 -complete=tag Awu Grepper -noprompt -cword -tool rg  -grepprg rg --vimgrep -u -query
+  nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 " }}}
 
 " Automatic Helpers {{{
@@ -166,10 +173,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
 
    " provides an asynchronous keyword completion system in the current buffer
-   Plug 'Shougo/deoplete.nvim'
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
    Plug 'Shougo/neopairs.vim'
    let g:deoplete#omni_input_patterns = {}
    let g:deoplete#omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+   let g:deoplete#enable_at_startup = 1
+   let g:deoplete#enable_smart_case = 1
 
    " Speed up Vim by updating folds only when called-for.
    let g:fastfold_savehook = 0
@@ -193,6 +202,7 @@ call plug#begin('~/.vim/plugged')
     let g:deoplete#sources#rust#rust_source_path='/home/cbraa/ws/rust/rust/src'
     Plug 'neomake/neomake'
     let g:neomake_ft_maker_remove_invalid_entries = 0
+    let g:neomake_rust_cargo_command = ['test', '--no-run']
     autocmd BufWritePost *.rs Neomake cargo
   " }}}
 
@@ -202,3 +212,6 @@ call plug#begin('~/.vim/plugged')
 " }}}
 
 call plug#end()
+
+runtime plugin/grepper.vim
+let g:grepper.rg.grepprg .= ' --smart-case'

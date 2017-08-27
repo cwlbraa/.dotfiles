@@ -2,7 +2,8 @@
 set -e -x
 PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
+toplevel="`git rev-parse --show-toplevel`"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
-  ctags -V --tag-relative -L - -f"$dir/$$.tags" --extra=+q --fields=+ialS --c++-kinds=+p --languages=-javascript,sql,html,css,fortran,json
+  ctags -V --tag-relative  -L - -f"$dir/$$.tags" --extra=+q --fields=+ialS --c++-kinds=+p --languages=-javascript,sql,html,css,fortran,json
 mv "$dir/$$.tags" "$dir/tags"

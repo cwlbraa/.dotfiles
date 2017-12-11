@@ -4,6 +4,10 @@ PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
 toplevel="`git rev-parse --show-toplevel`"
 trap 'rm -f "$dir/$$.tags"' EXIT
+source $toplevel/venv/bin/activate || true
+source $toplevel/.venv/bin/activate || true
+source $toplevel/env/bin/activate || true
+ctags -V -R --fields=+l --languages=python --python-kinds=-iv -f"$dir/$$.tags" $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")
 git ls-files | \
-  ctags -V --tag-relative  -L - -f"$dir/$$.tags" --extra=+q --fields=+ialS --c++-kinds=+p --languages=-javascript,sql,html,css,fortran,json
+  ctags -V --tag-relative=yes  -L - -a -f"$dir/$$.tags" --extra=+q --fields=+ialS --c++-kinds=+p --languages=-javascript,sql,html,css,fortran,json,python
 mv "$dir/$$.tags" "$dir/tags"

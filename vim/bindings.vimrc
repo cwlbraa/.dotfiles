@@ -25,6 +25,8 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " function! s:buflist()
 "   redir => ls
 "   silent ls

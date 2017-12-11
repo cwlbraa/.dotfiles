@@ -179,6 +179,7 @@ call plug#begin('~/.vim/plugged')
    let g:deoplete#omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
    let g:deoplete#enable_at_startup = 1
    let g:deoplete#enable_smart_case = 1
+   Plug 'AndrewRadev/splitjoin.vim'
 
    " Speed up Vim by updating folds only when called-for.
    let g:fastfold_savehook = 0
@@ -194,13 +195,20 @@ call plug#begin('~/.vim/plugged')
     Plug 'godoctor/godoctor.vim'
   " }}}
 
+    Plug 'neomake/neomake'
+  " Python {{{
+    Plug 'zchee/deoplete-jedi'
+    let g:neomake_python_enabled_makers = ['flake8']
+    autocmd BufWritePost *.py Neomake
+    " }}}
+
   " Rust {{{
     Plug 'rust-lang/rust.vim'
     let g:rustfmt_autosave = 1
     Plug 'sebastianmarkow/deoplete-rust'
     let g:deoplete#sources#rust#racer_binary='/home/cbraa/.cargo/bin/racer'
     let g:deoplete#sources#rust#rust_source_path='/home/cbraa/ws/rust/rust/src'
-    Plug 'neomake/neomake'
+
     let g:neomake_ft_maker_remove_invalid_entries = 0
     let g:neomake_rust_cargo_command = ['test', '--no-run']
     autocmd BufWritePost *.rs Neomake cargo
@@ -209,6 +217,7 @@ call plug#begin('~/.vim/plugged')
   " A solid language pack for Vim.
   " Adds 70+ languages and optimizes loading and installing.
     Plug 'sheerun/vim-polyglot'
+    Plug 'hdima/python-syntax'
 " }}}
 
 call plug#end()

@@ -16,7 +16,7 @@
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]
 	name = Connor Braa
-	email = cbraa@lytro.com
+	email = braa@samba.tv
 [init]
 	templatedir = ~/.dotfiles/git_template
 [mergetool "fugitive"]

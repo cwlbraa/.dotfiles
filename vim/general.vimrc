@@ -6,6 +6,7 @@
 autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set syntax=cpp
 autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set filetype=cpp
 autocmd BufNewFile,BufRead *.mkt,         set filetype=make
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " the big hax
 nnoremap ; :

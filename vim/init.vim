@@ -9,7 +9,6 @@ endif
 
 " Note: This line MUST come before any <leader> mappings
 let g:mapleader=","
-let g:maplocalleader = "-"
 
 " load the rest of the config
 source $HOME/.config/nvim/plugins.vimrc

@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Navigation {{{
   " A tree explorer plugin for vim
-  Plug 'scrooloose/nerdtree'
+  Plug 'tpope/vim-vinegar'
 
   " Displays tags in a window, ordered by scope
   Plug 'majutsushi/tagbar'

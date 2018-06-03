@@ -1,6 +1,6 @@
 # zsh setup, modified from ~/.bash_profile
 #
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # get directory this script is in
 SOURCE=${(%):-%N}
@@ -13,12 +13,7 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # path extensions for brew and cargo
 # export PATH="$HOME/.linuxbrew/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-# source $HOME/.linuxbrew/opt/chruby/share/chruby/chruby.sh
-# source $HOME/.linuxbrew/opt/chruby/share/chruby/auto.sh
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # neovim setup
 alias vim=nvim

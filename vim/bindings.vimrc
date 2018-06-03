@@ -16,15 +16,6 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " clang format with ctrl-k works real good in visual mode hopefully?
 map <C-K> :pyf /usr/share/clang/clang-format-3.8/clang-format.py<cr>
 
-" nerdtree remaps
-nnoremap <leader>nn :NERDTreeToggle<CR>
-nnoremap \ :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
-nnoremap \| :NERDTreeFind<CR>
-let g:NERDTreeShowBookmarks=1
-let g:NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " function! s:buflist()

@@ -8,6 +8,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # link up git dotfiles to home dotfiles
 ln -sf $dir/.gitconfig ~/.gitconfig
 ln -sf $dir/zsh/zshrc ~/.zshrc
+ln -sf $dir/i3config ~/.i3/config
+ln -sf $dir/Xresources ~/.Xresources
 
 # install rust toolchain
 # curl https://sh.rustup.rs -sSf | sh

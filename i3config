@@ -46,7 +46,9 @@ bindsym Mod1+space \
   -font      "Roboto Slab 12"   -opacity 80
   # -bg "#222222" -fg "#2ECC71" -hlbg "#445544" -hlfg "#2EEE71" -bw 4 -eh 1 \
 
-#bindsym Mod1+Tab exec rofi -show run  -font "Roboto Slab 18" -opacity "80" -lines 8 -line-margin 4 -width 100 -padding 160 -terminal urxvtc
+# alt tab like a normal person
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -69,7 +71,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec google-chome-stable
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -168,10 +170,10 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 
 assign [class="Google Play Music Desktop Player"] $ws7
-bindsym $mod+7 workspace $ws7; exec ~/.dotfiles/scripts/ensure.sh gpmdp "Google Play Music Desktop Player"
+bindsym $mod+7 workspace $ws7; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh gpmdp "Google Play Music Desktop Player"
 
 assign [class="Slack"] $ws8
-bindsym $mod+8 workspace $ws8; exec ~/.dotfiles/scripts/ensure.sh slack Slack
+bindsym $mod+8 workspace $ws8; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh slack Slack
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1

@@ -11,6 +11,9 @@ ln -sf $dir/zsh/zshrc ~/.zshrc
 ln -sf $dir/i3config ~/.i3/config
 ln -sf $dir/Xresources ~/.Xresources
 
+mkdir -p ~/go/src/github.com
+ln -sf ~/go/src/github.com ~/gh
+
 # install rust toolchain
 # curl https://sh.rustup.rs -sSf | sh
 # fast simd ag

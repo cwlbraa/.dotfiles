@@ -28,13 +28,11 @@ echo '# arrow up
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
 alias cleankernels="dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs sudo apt-get -y purge"
+alias reload='. ~/.zshrc'
 alias venv='source venv/bin/activate'
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
-
-# # fasd init
-# eval "$(fasd --init auto)"
 
 ### antigen and related config {{{
 # config for fancy prompt
@@ -69,7 +67,11 @@ export GOROOT=/usr/lib/go/
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+ws="${GOPATH}/src/github.com/pivotal-cf-experimental/infrastructure-workspace"
+if [[ -d "${ws}" ]]
+then
+  source ${ws}/shared_lib
+fi
 
-export PATH="/usr/lib/ccache:$PATH"
 
 eval "$(direnv hook zsh)"

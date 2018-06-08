@@ -10,48 +10,48 @@ XTerm*background: #2b2b2b
 XTerm*foreground: #e7e7e7
 XTerm*pointerColor: #16A085
 
-*background:                      #272827
-*foreground:                      #657b83
+/* *background:                      #272827 */
+/* *foreground:                      #657b83 */
 *fading:                          15
 *fadeColor:                       black
 *cursorColor:                     #16A085
 *pointerColorBackground:          #2B2C2B
 *pointerColorForeground:          #16A085
 
-!! black dark/light
-*color0:                          #232423
-*color8:                          #282928
+/* !! black dark/light */
+/* *color0:                          #232423 */
+/* *color8:                          #282928 */
 
-!! red dark/light
-*color1:                          #BA2922
-*color9:                          #CC372C
+/* !! red dark/light */
+/* *color1:                          #BA2922 */
+/* *color9:                          #CC372C */
 
-!! green dark/light
-*color2:                          #7E807E
-*color10:                         #8D8F8D
+/* !! green dark/light */
+/* *color2:                          #7E807E */
+/* *color10:                         #8D8F8D */
 
-!! yellow dark/light
-*color3:                          #4C4F4D
-*color11:                         #4E524F
+/* !! yellow dark/light */
+/* *color3:                          #4C4F4D */
+/* *color11:                         #4E524F */
 
-!! blue dark/light
-*color4:                          #16A085
-*color12:                         #13BF9D
+/* !! blue dark/light */
+/* *color4:                          #16A085 */
+/* *color12:                         #13BF9D */
 
-!! magenta dark/light
-*color5:                          #43746A
-*color13:                         #487D72
+/* !! magenta dark/light */
+/* *color5:                          #43746A */
+/* *color13:                         #487D72 */
 
-!! cyan dark/light
-*color6:                          #00CCCC
-*color14:                         #00D1D1
+/* !! cyan dark/light */
+/* *color6:                          #00CCCC */
+/* *color14:                         #00D1D1 */
 
-!! white dark/light
-*color7:                          #E0E0E0
-*color15:                         #E8E8E8
+/* !! white dark/light */
+/* *color7:                          #E0E0E0 */
+/* *color15:                         #E8E8E8 */
 
-Xcursor.theme: xcursor-breeze
-Xcursor.size:                     0
+/* Xcursor.theme: xcursor-breeze */
+/* Xcursor.size:                     0 */
 
 /* XTerm*background:                 #272827 */
 /* XTerm*foreground:                 #fdf6e3 */
@@ -59,7 +59,7 @@ XTerm*reverseVideo:               on
 XTerm*selectToClipboard:          true
 
 URxvt.font:                       xft:Hack-Regular, xft:DejaVuSansMono:size=11
-#URxvt.letterSpace: -1
+! URxvt.letterSpace: -1
 
 ! alternative font settings with 'terminus':
 !URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
@@ -226,3 +226,78 @@ URxvt*saveLines:                  5000
 ! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
 ! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
 ! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+! -----------------------------------------------------------------------------
+! File: gruvbox-urxvt256.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 13 Dec 2013
+! -----------------------------------------------------------------------------
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1

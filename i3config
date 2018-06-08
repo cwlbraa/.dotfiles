@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:URWGothic-Book 11
+font xft:Hack-Regular 12
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -152,8 +152,8 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:www
-set $ws2 2
+set $ws1 1
+set $ws2 2:www
 set $ws3 3
 set $ws4 4
 set $ws5 5
@@ -196,8 +196,8 @@ bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-assign [class="Firefox"] $ws1
-assign [class="Google-chrome"] $ws1
+assign [class="Firefox"] $ws2
+assign [class="Google-chrome"] $ws2
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 
@@ -302,6 +302,7 @@ exec --no-startup-id start_conky_live_maia
 exec --no-startup-id xautolock -time 10 -detectsleep -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id redshift || redshift 37.8:-122.4
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -346,8 +347,7 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-# strip_workspace_numbers yes
+        font pango:Icons 10
 
     colors {
         background #283339
@@ -359,7 +359,7 @@ bar {
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #283339 #EEE8D5
         binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        #urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
 }
 

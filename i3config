@@ -138,7 +138,7 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad; scratchpad show
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
@@ -302,7 +302,7 @@ exec --no-startup-id start_conky_live_maia
 exec --no-startup-id xautolock -time 10 -detectsleep -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id redshift || redshift 37.8:-122.4
+exec --no-startup-id redshift-gtk || redshift-gtk 37.8:-122.4
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

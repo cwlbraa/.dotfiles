@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Navigation {{{
   " A tree explorer plugin for vim
   Plug 'tpope/vim-vinegar'
+  let g:netrw_keepdir=0
 
   " Displays tags in a window, ordered by scope
   Plug 'majutsushi/tagbar'
@@ -67,19 +68,6 @@ call plug#begin('~/.vim/plugged')
 
 " UI Additions {{{
   " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
-  Plug 'luochen1990/rainbow'
-  let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-  let g:rainbow_conf = {
-  \   'operators': '_,\|=\|+\|\*\|-\|\.\|;\||\|&\|?\|:\|<\|>\|%\|<<\|>>\|!_',
-  \   'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
-  \   'separately': {
-  \       '*': {},
-  \       'html': {
-  \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-  \       },
-  \       'css': 0,
-  \   }
-  \}
 
   " Colors {{{
     Plug 'dolio/vim-hybrid'
@@ -100,36 +88,33 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   " detect indent and set buffer options
   Plug 'tpope/vim-sleuth'
-  " visible tabs
-  set listchars=tab:>-
-  set list
 
-  " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
-  Plug 'luochen1990/rainbow'
-  let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-  let g:rainbow_conf = {
-  \   'operators': '_,\|=\|+\|\*\|-\|\.\|;\||\|&\|?\|:\|<\|>\|%\|<<\|>>\|!_',
-  \   'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
-  \   'separately': {
-  \       '*': {},
-  \       'cpp': {
-  \             'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
-  \       },
-  \       'tex': {
-  \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-  \       },
-  \       'lisp': {
-  \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-  \       },
-  \       'vim': {
-  \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-  \       },
-  \       'html': {
-  \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-  \       },
-  \       'css': 0,
-  \   }
-  \}
+  " " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
+  " Plug 'luochen1990/rainbow'
+  " let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+  " let g:rainbow_conf = {
+  " \   'operators': '_,\|=\|+\|\*\|-\|\.\|;\||\|&\|?\|:\|<\|>\|%\|<<\|>>\|!_',
+  " \   'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
+  " \   'separately': {
+  " \       '*': {},
+  " \       'cpp': {
+  " \             'parentheses': [['(', ')'], ['\[', '\]'], ['{', '}']],
+  " \       },
+  " \       'tex': {
+  " \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+  " \       },
+  " \       'lisp': {
+  " \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+  " \       },
+  " \       'vim': {
+  " \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+  " \       },
+  " \       'html': {
+  " \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+  " \       },
+  " \       'css': 0,
+  " \   }
+  " \}
 " }}}
 
 " Commands {{{
@@ -192,7 +177,18 @@ call plug#begin('~/.vim/plugged')
 
   " Go {{{
     Plug 'fatih/vim-go'
+    let g:go_fmt_command = 'goimports'
+    let g:godef_split = 3
+    let g:go_autodetect_gopath = 0
+    let g:go_term_enabled = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_interfaces = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
     Plug 'godoctor/godoctor.vim'
+    autocmd BufEnter,FileType go set tabstop=4 shiftwidth=4 noexpandtab
   " }}}
 
     Plug 'neomake/neomake'

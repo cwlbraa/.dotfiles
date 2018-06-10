@@ -96,6 +96,13 @@ vnoremap > >gv
 nnoremap Y y$
 " Y in visual mode copies to system clipboard
 vmap Y "+y
+
+" yank to clipboard alias
+vnoremap <leader>y "*y
+
+" yank to clipboard alias
+nnoremap <leader>p "*p
+vnoremap <leader>p "*p
 " }}}
 
 " Open files in current directory {{{

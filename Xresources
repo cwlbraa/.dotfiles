@@ -50,7 +50,7 @@ XTerm*pointerColor: #16A085
 /* *color7:                          #E0E0E0 */
 /* *color15:                         #E8E8E8 */
 
-/* Xcursor.theme: xcursor-breeze */
+/* Xcursor.theme: xcursor-breeze-snow
 /* Xcursor.size:                     0 */
 
 /* XTerm*background:                 #272827 */
@@ -58,12 +58,14 @@ XTerm*pointerColor: #16A085
 XTerm*reverseVideo:               on
 XTerm*selectToClipboard:          true
 
-URxvt.font:                       xft:Hack-Regular, xft:DejaVuSansMono:size=11
-! URxvt.letterSpace: -1
+URxvt.font: xft:Hack Nerd Font Mono:style=regular,\
+            xft:DejaVu Sans:pixelsize=18
+
+rofi.font: Hack 10
 
 ! alternative font settings with 'terminus':
 !URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-URxvt.bold-font:                       9x15,xft:Hack-Bold
+!URxvt.bold-font:                       9x15,xft:Hack-Bold
 !URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
 !! terminus names see end of file!
 

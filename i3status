@@ -36,12 +36,12 @@ load {
 
 disk "/" {
         # format = " hdd %avail "
-        format = " ⛁ %avail "
+        format = " ⛁%avail "
 }
 
 disk "/home" {
         # format = " hdd %avail "
-        format = " ⛁ %avail "
+        format = " ⛁%avail "
 }
 
 ethernet _first_ {

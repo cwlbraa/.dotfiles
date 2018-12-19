@@ -1,4 +1,3 @@
-Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -58,7 +57,7 @@ XTerm*pointerColor: #16A085
 XTerm*reverseVideo:               on
 XTerm*selectToClipboard:          true
 
-URxvt.font: xft:Hack Nerd Font Mono:style=regular,\
+URxvt.font: xft:Hack Nerd Font Mono:style=regular:size=10,\
             xft:DejaVu Sans:pixelsize=18
 
 rofi.font: Hack 10

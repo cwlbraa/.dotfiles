@@ -19,6 +19,7 @@ general {
 order += "battery all"
 order += "disk /"
 order += "disk /home"
+order += "disk /home/braa/.local/share"
 order += "wireless _first_"
 order += "ethernet _first_"
 # order += "load"
@@ -40,6 +41,11 @@ disk "/" {
 }
 
 disk "/home" {
+        # format = " hdd %avail "
+        format = " ⛁%avail "
+}
+
+disk "/home/braa/.local/share" {
         # format = " hdd %avail "
         format = " ⛁%avail "
 }

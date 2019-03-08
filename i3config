@@ -195,6 +195,12 @@ bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 
+# move focused workspace between monitors
+bindsym $mod+Ctrl+j move container to output down
+bindsym $mod+Ctrl+k move container to output up
+bindsym $mod+Ctrl+h move container to output left
+bindsym $mod+Ctrl+l move container to output right
+
 # Open applications on specific workspaces
 assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws2
@@ -336,7 +342,7 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar -t
+	i3bar_command i3bar
 	status_command i3status
 	position bottom
 

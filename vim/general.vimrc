@@ -6,6 +6,7 @@
 autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set syntax=cpp
 autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set filetype=cpp
 autocmd BufNewFile,BufRead *.mkt,         set filetype=make
+autocmd Filetype make set noexpandtab
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " the big hax
@@ -48,7 +49,6 @@ set autowriteall       " Writes on make/shell commands
 set foldmethod=syntax
 set foldlevel=20
 set formatoptions=crql
-set iskeyword+=$,@,-     " Add extra characters that are valid parts of variables
 set splitright
 if version >= 704
   set completeopt=menu,noinsert,noselect

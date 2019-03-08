@@ -129,6 +129,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-abolish'
   " Vim sugar for the UNIX shell commands that need it the most; e.g. :Find, :Wall
   Plug 'tpope/vim-eunuch'
+  Plug 'lambdalisue/suda.vim'
 
 
   " a Git wrapper so awesome, it should be illegal; :Gblame, etc

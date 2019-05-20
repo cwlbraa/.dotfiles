@@ -28,7 +28,7 @@ echo '# arrow up
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
 alias cleankernels="dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs sudo apt-get -y purge"
-alias reload='. ~/.zshrc'
+alias reload='. ~/.zshrc && antigen reset && zsh'
 alias venv='source venv/bin/activate'
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
@@ -39,7 +39,7 @@ type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 source $ZDOT_DIR/antigen/antigen.zsh
 
 antigen use oh-my-zsh
-antigen theme https://gist.github.com/nweddle/e456229c0a773c32d37b.git agnoster-newline
+antigen theme https://gist.github.com/f769ad4b37239fac19fc3cc5f1099c26.git agnoster-n
 antigen bundle common-aliases
 antigen bundle fasd
 antigen bundle git
@@ -67,10 +67,9 @@ export GOROOT=/usr/lib/go/
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-ws="${GOPATH}/src/github.com/pivotal-cf-experimental/infrastructure-workspace"
-if [[ -d "${ws}" ]]
-then
-  source ${ws}/shared_lib
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
 fi
 
 

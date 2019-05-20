@@ -8,6 +8,8 @@ autocmd BufNewFile,BufRead *.cppt,*.ht,*.cpptx,*.htx   set filetype=cpp
 autocmd BufNewFile,BufRead *.mkt,         set filetype=make
 autocmd Filetype make set noexpandtab
 autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype cpp set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 
 " the big hax
 nnoremap ; :

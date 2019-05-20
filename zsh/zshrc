@@ -31,6 +31,8 @@ alias cleankernels="dpkg --list | grep linux-image | awk '{ print $2 }' | sort -
 alias reload='. ~/.zshrc && antigen reset && zsh'
 alias venv='source venv/bin/activate'
 
+fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
+
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 

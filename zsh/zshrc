@@ -15,9 +15,14 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # export PATH="$HOME/.linuxbrew/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
-# neovim setup
-alias vim=nvim
-export EDITOR=nvim
+export BROWSER=google-chrome.desktop
+
+export VISUAL="emacsclient -t -s instance1"
+export EDITOR="emacsclient -t -s instance1"
+alias emc="emacsclient -nc -s instance1"
+alias emct="${VISUAL}"
+alias vim=emct
+
 
 # up arrow readline completion
 echo '# arrow up
@@ -52,6 +57,8 @@ antigen bundle sudo
 antigen bundle colored-man-pages
 antigen bundle copydir
 antigen bundle copyfile
+antigen bundle kubectl
+antigen bundle docker
 
 antigen apply
 
@@ -64,15 +71,16 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" 
     source ~/.iterm2_shell_integration.`basename $SHELL`
 fi
 
-export PATH=$PATH:/usr/lib/go/bin
 export GOROOT=/usr/lib/go/
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/lib/go/bin:$PATH
 
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
 
+. /etc/profile
 
 eval "$(direnv hook zsh)"

@@ -4,8 +4,10 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # neovim setup
-alias vim=nvim
-export EDITOR=nvim
+alias emc="emacsclient -c"
+export VISUAL="emacsclient -c"
+export EDITOR="emacsclient -t"
+alias vim=emc
 
 # fasd init
 eval "$(fasd --init auto)"

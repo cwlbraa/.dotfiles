@@ -17,8 +17,8 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 export BROWSER=google-chrome.desktop
 
-export VISUAL="emacsclient -t -s instance1"
-export EDITOR="emacsclient -t -s instance1"
+export VISUAL="emacsclient -tc -s instance1"
+export EDITOR="emacsclient -tc -s instance1"
 alias emc="emacsclient -nc -s instance1"
 alias emct="${VISUAL}"
 alias vim=emct

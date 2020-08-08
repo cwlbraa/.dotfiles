@@ -18,7 +18,7 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 export BROWSER=google-chrome.desktop
 
 export VISUAL="emacsclient -tc -s instance1"
-export EDITOR="emacsclient -tc -s instance1"
+export EDITOR="vi"
 alias emc="emacsclient -nc -s instance1"
 alias emct="${VISUAL}"
 alias vim=emct
@@ -59,6 +59,7 @@ antigen bundle copydir
 antigen bundle copyfile
 antigen bundle kubectl
 antigen bundle docker
+antigen bundle archlinux
 
 antigen apply
 

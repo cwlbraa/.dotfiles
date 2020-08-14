@@ -497,6 +497,8 @@ before packages are loaded."
   (setq spacemacs-default-jump-handlers
         (remove 'evil-goto-definition spacemacs-default-jump-handlers))
   (setq global-git-commit-mode t)
+  (set-mouse-color "white")
+  (mouse-avoidance-mode 'banish)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

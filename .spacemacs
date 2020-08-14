@@ -40,7 +40,10 @@ This function should only modify configuration layer settings."
      github
      markdown
      fasd
-     (shell :variables shell-default-height 30 shell-default-position 'bottom)
+     (shell :variables
+            shell-default-shell 'vterm
+            shell-default-height 30
+            shell-default-position 'bottom)
      syntax-checking
      version-control
      vinegar
@@ -475,7 +478,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq exec-path (append exec-path '("/home/braa/go")))
   (setenv "GOPATH" "/home/braa/go")
   (setq vc-follow-symlinks t)
-  (global-git-commit-mode t)
   ;; (setq rust-format-on-save t)
 )
 
@@ -494,6 +496,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq spacemacs-default-jump-handlers
         (remove 'evil-goto-definition spacemacs-default-jump-handlers))
+  (setq global-git-commit-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

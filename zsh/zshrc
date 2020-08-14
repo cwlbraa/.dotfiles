@@ -33,7 +33,6 @@ echo '# arrow up
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
-alias cleankernels="dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs sudo apt-get -y purge"
 alias reload='. ~/.zshrc && antigen reset && zsh'
 alias venv='source venv/bin/activate'
 
@@ -67,11 +66,6 @@ antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_R_OPTS='--sort'
-
-# do this extra last because other changes to te prompt can clobber it
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-    source ~/.iterm2_shell_integration.`basename $SHELL`
-fi
 
 export GOROOT=/usr/lib/go/
 export GOPATH=$HOME/go

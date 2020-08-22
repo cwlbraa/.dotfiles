@@ -38,13 +38,13 @@ bindsym $mod+d exec --no-startup-id dmenu_recency
 
 bindsym Mod1+space \
   exec rofi \
-  -show drun -terminal urxvtc -hide-scrollbar true  \
+  -show drun -hide-scrollbar true  \
   -line-margin 0 -lines 20 -eh 1 -width 40 -bw 3 \
   -kb-mode-next      Alt+space \
   -kb-mode-previous  Alt+Control+space \
-  -opacity 100 \
-  -theme maia
-  # -bg "#222222" -fg "#2ECC71" -hlbg "#445544" -hlfg "#2EEE71" -bw 4 -eh 1 \
+  -theme gruvbox-dark \
+  -icon-theme oomox-gruvbox-dark \
+  -show-icons
 
 # alt tab like a normal person
 bindsym Mod1+Tab workspace next
@@ -354,6 +354,17 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
@@ -368,18 +379,18 @@ bar {
 	bindsym button5 nop
         font pango:Icons, Hack Nerd Font Mono, DejaVu Sans 11
 
-    colors {
-        background #283339
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #283339 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        #urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+  colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+  }
 }
 
 # hide/unhide i3status bar
@@ -387,13 +398,10 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
-  client.background       #2B2C2B
+client.focused          $blue $blue $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
 
 #############################
 ### settings for i3-gaps: ###

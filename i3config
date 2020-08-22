@@ -169,7 +169,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 
 assign [class="Emacs"] $ws1
-bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh emacs Emacs
+bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh "emacsclient -nc -s instance1" Emacs
 
 assign [class="Google Play Music Desktop Player"] $ws7
 bindsym $mod+7 workspace $ws7; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh gpmdp "Google Play Music Desktop Player"

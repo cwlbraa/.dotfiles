@@ -33,16 +33,13 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 bindsym $mod+w kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-
 bindsym Mod1+space \
   exec rofi \
   -show drun -hide-scrollbar true  \
-  -line-margin 0 -lines 20 -eh 1 -width 40 -bw 3 \
+  -line-margin 0 -lines 20 -eh 1 -width 20 -bw 3 \
   -kb-mode-next      Alt+space \
   -kb-mode-previous  Alt+Control+space \
-  -theme gruvbox-dark \
+  -theme gruvbox-dark-soft \
   -icon-theme oomox-gruvbox-dark \
   -show-icons
 
@@ -152,14 +149,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:emacs
-set $ws2 2:www
+set $ws1 1:
+set $ws2 2:
 set $ws3 3
 set $ws4 4
 set $ws5 5
 set $ws6 6
-set $ws7 7:tunes
-set $ws8 8:chat
+set $ws7 7:
+set $ws8 8:
 
 # switch to workspace
 bindsym $mod+2 workspace $ws2
@@ -266,7 +263,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym l exec --no-startup-id light-locker-command --lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -305,20 +302,18 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id "light-locker-command --lock"
+exec --no-startup-id light-locker --lock-on-lid --lock-on-suspend
+exec --no-startup-id xautolock -time 30 -detectsleep -locker light-locker-command --lock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-# exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_live_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 30 -detectsleep -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id redshift-gtk || redshift-gtk 37.8:-122.4
@@ -398,8 +393,8 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-client.focused          $blue $blue $darkgray $purple $darkgray
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.focused          $aqua $darkgray $aqua $yellow $aqua
+client.focused_inactive $darkgray $darkgray $yellow $aqua $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
 

@@ -507,6 +507,8 @@ before packages are loaded."
   (mouse-avoidance-mode 'banish)
   (evil-cleverparens-mode t)
   (setq lsp-completion-provider :capf)
+  (add-hook 'vterm-mode-hook
+            (lambda () (define-key evil-insert-state-local-map (kbd "C-r") 'term-send-raw)))
 )
 
 ;; VVVVVVVVVV generated below, no touchy VVVVVVVVVV

@@ -159,20 +159,23 @@ set $ws7 7:
 set $ws8 8:
 
 # switch to workspace
-bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
+bindsym $mod+8 workspace $ws8
 
 assign [class="Emacs"] $ws1
 bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh "emacsclient -nc -s instance1" Emacs
+
+bindsym $mod+2 workspace $ws2; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh "brave" Brave-browser
 
 assign [class="Google Play Music Desktop Player"] $ws7
 bindsym $mod+7 workspace $ws7; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh gpmdp "Google Play Music Desktop Player"
 
 assign [class="Slack"] $ws8
-bindsym $mod+8 workspace $ws8; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh slack Slack
+assign [class="discord"] $ws8
+# bindsym $mod+8 workspace $ws8; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh slack Slack
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1

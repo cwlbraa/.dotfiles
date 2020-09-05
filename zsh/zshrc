@@ -15,7 +15,7 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # export PATH="$HOME/.linuxbrew/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
-export BROWSER=google-chrome.desktop
+export BROWSER=brave.desktop
 export VISUAL="emacsclient -tc -s instance1"
 export EDITOR="vi"
 

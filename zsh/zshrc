@@ -17,6 +17,7 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 export BROWSER=brave.desktop
 export EDITOR="vi"
+export GIT_EDITOR="emacsclient -c"
 
 alias emcc="emacsclient -c"
 alias emc="emacsclient -n"
@@ -24,42 +25,41 @@ alias emct="emacsclient -tc"
 export VISUAL="emacsclient -tc"
 alias vim="emct"
 
-
-# up arrow readline completion
-echo '# arrow up
-"\e[A":history-search-backward
-## arrow down
-"\e[B":history-search-forward' > ~/.inputrc
-
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
 alias reload='. ~/.zshrc && antigen reset && zsh'
 alias venv='source venv/bin/activate'
+alias gst='git status'
 
 fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 
-### antigen and related config {{{
-# config for fancy prompt
+### antigen - zsh package manager {{{
 source $ZDOT_DIR/antigen/antigen.zsh
 
 antigen use oh-my-zsh
-antigen theme https://gist.github.com/f769ad4b37239fac19fc3cc5f1099c26.git agnoster-n
-antigen bundle common-aliases
-antigen bundle fasd
-antigen bundle git
-antigen bundle gitfast
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle sudo
+antigen theme https://gist.github.com/f769ad4b37239fac19fc3cc5f1099c26.git agnoster-n # prompt with newline
+antigen bundle archlinux
+antigen bundle aws
 antigen bundle colored-man-pages
+antigen bundle command-not-found
+antigen bundle common-aliases
 antigen bundle copydir
 antigen bundle copyfile
-antigen bundle kubectl
 antigen bundle docker
-antigen bundle archlinux
+antigen bundle fasd # for z
+antigen bundle fzf
+antigen bundle gcloud
+antigen bundle gitfast
+antigen bundle golang
+antigen bundle kubectl
+antigen bundle osx
+antigen bundle sudo
+antigen bundle zsh-interactive-cd # uses fzf
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zsh-history-substring-search # up arrow
 
 antigen apply
 
@@ -68,9 +68,9 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export FZF_CTRL_R_OPTS='--sort'
 
 export GOROOT=/usr/lib/go/
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/lib/go/bin:$PATH
+export GOPATH="${HOME}/go"
+export PATH="${GOPATH}/bin:${PATH}"
+export PATH="/usr/lib/go/bin:${PATH}"
 
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh

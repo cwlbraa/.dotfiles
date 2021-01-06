@@ -15,6 +15,9 @@
       },
       "derailed/k9s": {
         "revision": "c08736cb9133cb87a0a27c70fe91adadcd0b2a83"
+      },
+      "adoptopenjdk/openjdk": {
+        "revision": "463eb266789e9e45b4a444923877861a4068c64d"
       }
     },
     "brew": {
@@ -479,6 +482,12 @@
         "version": "2.032R-ro-1.052R-it-1.012R-VAR",
         "options": {
           "full_name": "homebrew/cask-fonts/font-source-code-pro"
+        }
+      },
+      "adoptopenjdk": {
+        "version": "15,36",
+        "options": {
+          "full_name": "adoptopenjdk"
         }
       }
     }

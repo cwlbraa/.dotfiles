@@ -41,6 +41,11 @@ fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+autoload -U compinit compdef
+compinit
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
 ### antigen and related config {{{
 # config for fancy prompt
 source $ZDOT_DIR/antigen/antigen.zsh
@@ -78,5 +83,13 @@ if [[ $TERM == xterm-termite ]]; then
 fi
 
 . /etc/profile
+
+source <(ko completion --zsh)
+compdef _ko ko
+source <(kn completion zsh)
+compdef _kn kn
+
+export CLOUDSDK_COMPUTE_ZONE="us-west1-a"
+export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
 
 eval "$(direnv hook zsh)"

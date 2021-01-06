@@ -60,6 +60,7 @@ This function should only modify configuration layer settings."
      terraform
      docker
      systemd
+     osx
      ;; spell-checking
      ;; org
      )
@@ -71,12 +72,13 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(
     gruvbox-theme
+    mac-pseudo-daemon
     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(orgit org-plus-contrib org-superstar)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -508,6 +510,7 @@ before packages are loaded."
   (mouse-avoidance-mode 'banish)
   (evil-cleverparens-mode t)
   (setq lsp-completion-provider :capf)
+  (setq mac-pseudo-daemon-mode t)
   (add-hook 'vterm-mode-hook
             (lambda () (define-key evil-insert-state-local-map (kbd "C-r") 'term-send-raw)))
 )

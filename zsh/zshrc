@@ -16,13 +16,13 @@ ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 export BROWSER=brave.desktop
-export VISUAL="emacsclient -tc"
 export EDITOR="vi"
 
 alias emcc="emacsclient -c"
 alias emc="emacsclient -n"
-alias emct="${VISUAL}"
-alias vim=emct
+alias emct="emacsclient -tc"
+export VISUAL="emacsclient -tc"
+alias vim="emct"
 
 
 # up arrow readline completion

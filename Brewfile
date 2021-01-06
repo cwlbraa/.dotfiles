@@ -27,6 +27,7 @@ brew 'yarn'
 brew 'yq'
 brew 'ytt'
 brew 'zsh'
+brew 'libvterm'
 
 cask 'docker'
 cask 'emacs', no_quarantine: true

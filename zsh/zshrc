@@ -12,16 +12,19 @@ while [ -h "$SOURCE" ]; do
   SOURCE="$(readlink "$SOURCE")"
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )" # path extensions for brew and cargo # export PATH="$HOME/.linuxbrew/bin:$PATH"
-# export PATH="$HOME/.cargo/bin:$PATH"
+ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+# path extensions
+# export PATH="$HOME/.linuxbrew/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 # export GOROOT=/usr/lib/go/
 # export PATH="/usr/lib/go/bin:${PATH}"
 export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin:${PATH}"
+
+# cloud stuff
 export KO_DOCKER_REPO="gcr.io/braa-296019"
 export CLOUDSDK_COMPUTE_ZONE="us-west1-a"
-export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
 
 export BROWSER=brave.desktop
 export EDITOR="vi"
@@ -49,6 +52,7 @@ type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 # zsh completion from google-built CLIs doesn't play well with antigen
 # to get it working, preemptively load the compinit&compdef and use them to load completion functions
 # if any of these scripts are broken, they'll fail silently
+export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python/libexec/bin/python"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 autoload -U compinit compdef
 compinit

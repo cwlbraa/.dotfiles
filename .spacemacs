@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      evil-commentary
      better-defaults
      (shell :variables
+            close-window-with-terminal t
             shell-default-shell 'vterm
             shell-default-height 30
             shell-default-position 'bottom)

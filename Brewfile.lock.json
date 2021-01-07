@@ -11,13 +11,16 @@
         "revision": "fcb1d561f5b7e02d6b0a705e3f3ca9fd3fad446e"
       },
       "homebrew/cask-fonts": {
-        "revision": "ee070d2fe96da01e859fc4fdf82c7021a7cedb94"
+        "revision": "0d42ad8900f04ccc96bafb24f4f061f65ff54585"
       },
       "derailed/k9s": {
         "revision": "c08736cb9133cb87a0a27c70fe91adadcd0b2a83"
       },
       "adoptopenjdk/openjdk": {
         "revision": "463eb266789e9e45b4a444923877861a4068c64d"
+      },
+      "knative/client": {
+        "revision": "85e6a23c54d2b99c413a9dd3d7d5e20bdc40f936"
       }
     },
     "brew": {
@@ -239,12 +242,7 @@
           }
         }
       },
-      "python": {
-        "options": {
-          "link": true,
-          "overwrite": true
-        }
-      },
+      "python": null,
       "shellcheck": {
         "version": "0.7.1",
         "bottle": {
@@ -420,6 +418,60 @@
             }
           }
         }
+      },
+      "bash": {
+        "version": "5.1.4",
+        "bottle": {
+          "cellar": "/usr/local/Cellar",
+          "prefix": "/usr/local",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/bash-5.1.4.big_sur.bottle.tar.gz",
+              "sha256": "1c7c13309368474e6f7b3afd9c6ba13b213b00caeb9b990e171cf5e097e8e5e1"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/bash-5.1.4.arm64_big_sur.bottle.tar.gz",
+              "sha256": "253a8f71bb8ca1444fa5951caa3e4d0e6f51ca6cd6d7c9fc9f79f0c58dc3e693"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/bash-5.1.4.catalina.bottle.tar.gz",
+              "sha256": "2195ea39cf6607ec440addd6aed524c5a66719e998d74d5f9595f594f6593b21"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/bash-5.1.4.mojave.bottle.tar.gz",
+              "sha256": "4a294caec86652221a9901b9d892723a84e60d05bc91155efcb661829b13a898"
+            }
+          }
+        }
+      },
+      "kn": {
+        "version": "v0.19.1",
+        "bottle": false
+      },
+      "poetry": {
+        "version": "1.1.4",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/poetry-1.1.4.big_sur.bottle.1.tar.gz",
+              "sha256": "5bed2df1069a4af8088e65aac9ed18ad6fb3887a2bf5c1681d40ab84ff3bf3ab"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/poetry-1.1.4.arm64_big_sur.bottle.1.tar.gz",
+              "sha256": "27c76026e47e0a8fc572fdaea9cde45b0dab4613bdf4d583b91c1561e640ee3f"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/poetry-1.1.4.catalina.bottle.1.tar.gz",
+              "sha256": "8266e0c42f1da8180bc22fa150eb9a31b2d776d594ebbc6f9095c54f7beb0f51"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/poetry-1.1.4.mojave.bottle.1.tar.gz",
+              "sha256": "fcd488237a0e10f9d661f26bf22e69b90f179d380970b8aed333b73dc98c2608"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -495,9 +547,9 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.7.1",
+        "HOMEBREW_VERSION": "2.7.2",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "144bb4024b38251d4f24c3cb4f2ba30d4ab85c55",
+        "Homebrew/homebrew-core": "d31422fbc45cae42f4f5815e2be256df6c586d15",
         "CLT": "12.3.0.0.1.1607026830",
         "Xcode": "12.0",
         "macOS": "10.15.7"

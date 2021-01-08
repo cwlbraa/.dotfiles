@@ -354,9 +354,9 @@ It should only modify the values of Spacemacs settings."
    ;; If you use Emacs as a daemon and wants unicode characters only in GUI set
    ;; the value to quoted `display-graphic-p'. (default t)
    dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-mode-line-theme '(spacemacs
-                                 :separator contour
-                                 :separator-scale 1.25)
+   dotspacemacs-mode-line-theme '(all-the-icons
+                                 :separator arrow
+                                 :separator-scale 1.55)
 
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point

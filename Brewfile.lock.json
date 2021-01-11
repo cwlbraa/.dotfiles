@@ -23,7 +23,10 @@
         "revision": "85e6a23c54d2b99c413a9dd3d7d5e20bdc40f936"
       },
       "homebrew/cask": {
-        "revision": "59172442fb573102702cd79dfe6adbc9999d4249"
+        "revision": "b47b1c9e86d3f3f0f154091de08c43a6424bdcbf"
+      },
+      "railwaycat/emacsmacport": {
+        "revision": "6575b3a9100dad480f1f8c0a421aeb6d401dfc05"
       }
     },
     "brew": {
@@ -525,6 +528,35 @@
             }
           }
         }
+      },
+      "gnu-sed": {
+        "version": "4.8",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-sed-4.8.big_sur.bottle.tar.gz",
+              "sha256": "3846b361699dd0260a616085b2a1678c874a2fcce8ce70e704a018dce3b4a882"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-sed-4.8.arm64_big_sur.bottle.tar.gz",
+              "sha256": "72bc2b8cf7c7e18d106d79c7db382f7160408aafa8fb765b084cbe965e92db9b"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-sed-4.8.catalina.bottle.tar.gz",
+              "sha256": "726be75d6d7155820b408a10e5c1a5ba1406374a7fc167af62524a4f4bbbc099"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-sed-4.8.mojave.bottle.tar.gz",
+              "sha256": "093f16752e7dfb115c055f20aed090108b94edd47c40f5e50878d961359251b2"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/gnu-sed-4.8.high_sierra.bottle.tar.gz",
+              "sha256": "865abe618c67037a4a419a05e0df2c6814fb3abdd6f631ea546aeba0aaf8eb78"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -594,6 +626,13 @@
         "options": {
           "full_name": "adoptopenjdk"
         }
+      },
+      "emacs-mac": {
+        "version": "emacs-27.1-mac-8.1",
+        "options": {
+          "no_quarantine": true,
+          "full_name": "railwaycat/emacsmacport/emacs-mac"
+        }
       }
     }
   },
@@ -602,7 +641,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.7.2",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "d31422fbc45cae42f4f5815e2be256df6c586d15",
+        "Homebrew/homebrew-core": "ec1e3345b73c225873f04261859588e1dce267b6",
         "CLT": "12.3.0.0.1.1607026830",
         "Xcode": "12.0",
         "macOS": "10.15.7"

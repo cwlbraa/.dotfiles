@@ -496,6 +496,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setenv "GOPATH" "/home/braa/go")
   (setq vc-follow-symlinks t)
   (setq terminal-here-terminal-command '("termite"))
+  (setq git-magit-status-fullscreen t)
 )
 
 (defun dotspacemacs/user-load ()

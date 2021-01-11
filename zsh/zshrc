@@ -28,13 +28,13 @@ export CLOUDSDK_COMPUTE_ZONE="us-west1-a"
 
 export BROWSER=brave.desktop
 export EDITOR="vi"
-export GIT_EDITOR="emacsclient -c"
 
 alias emcc="emacsclient -c"
 alias emc="emacsclient -n"
 alias emct="emacsclient -tc"
+alias vim="emacsclient -tc"
+export GIT_EDITOR="emacsclient -tc"
 export VISUAL="emacsclient -tc"
-alias vim="emct"
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'

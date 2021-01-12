@@ -25,3 +25,5 @@
 	tool = fugitive
 [core]
 	trustctime = false
+[gitlab "gitlab.eng.vmware.com/api/v4"]
+	user = cbraa

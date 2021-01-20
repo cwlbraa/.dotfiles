@@ -34,8 +34,7 @@ This function should only modify configuration layer settings."
    '(
      ;; ----------------------------------------------------------------
      ivy
-     (vinegar :variables
-            vinegar-dired-hide-details t)
+     vinegar
      (spacemacs-layouts :variables
             spacemacs-layouts-restrict-spc-tab t)
      evil-commentary
@@ -61,7 +60,7 @@ This function should only modify configuration layer settings."
      ruby-on-rails
      (rust :variables lsp-rust-server 'rust-analyzer)
      python
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      (yaml :variables yaml-enable-lsp t)
      terraform
      docker

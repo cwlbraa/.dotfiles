@@ -1,0 +1,11 @@
+---
+apiVersion: ctlptl.dev/v1alpha1
+kind: Cluster
+product: minikube
+registry: registry.local
+minCPUs: 8
+---
+apiVersion: ctlptl.dev/v1alpha1
+kind: Registry
+name: registry.local
+port: 5000

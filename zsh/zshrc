@@ -23,7 +23,8 @@ export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin:${PATH}"
 
 # cloud stuff
-export KO_DOCKER_REPO="gcr.io/braa-296019"
+export GCR_REPO="gcr.io/braa-296019"
+export KO_DOCKER_REPO=registry.local:5000
 export CLOUDSDK_COMPUTE_ZONE="us-west1-a"
 
 export BROWSER=brave.desktop

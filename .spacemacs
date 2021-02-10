@@ -47,7 +47,9 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)
      auto-completion
      syntax-checking
-     version-control
+     (version-control :variables
+                      version-control-diff-side 'left
+                      version-control-diff-tool 'diff-hl)
      git
      github
      (lsp :variables
@@ -63,13 +65,14 @@ This function should only modify configuration layer settings."
      (markdown :variables markdown-live-preview-engine 'vmd)
      (yaml :variables yaml-enable-lsp t)
      terraform
-     docker
+     (docker :variables docker-dockerfile-backend 'lsp)
      kubernetes
      (groovy :variables
              groovy-indent-offset 2
              groovy-backend 'company-groovy)
      systemd
      osx
+     (xclipboard :variables xclipboard-enable-cliphist t)
      ;; spell-checking
      ;; org
      )
@@ -200,8 +203,8 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-lists '((recents . 10)
+                                (projects . 3))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -549,7 +552,7 @@ This function is called at the very end of Spacemacs initialization."
  '(auth-source-save-behavior nil)
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(vterm treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil ruby-hash-syntax lsp-ui emr list-utils editorconfig bui lsp-mode treemacs cfrs posframe package-lint all-the-icons prettier-js kubernetes-tramp kubernetes-evil kubernetes wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy counsel-projectile insert-shebang flycheck-bashate fish-mode company-shell groovy-mode groovy-imports company-anaconda yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-cscope xcscope cython-mode anaconda-mode blacken pythonic evil-commentary dockerfile-mode docker tablist json-mode docker-tramp json-snatcher json-reformat yaml-mode xkcd projectile-rails inflections feature-mode emojify emoji-cheat-sheet-plus company-terraform terraform-mode hcl-mode company-emoji toml-mode ron-mode racer helm-gtags ggtags flycheck-rust counsel-gtags counsel swiper ivy cargo rust-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht fasd xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help gruvbox-dark-theme go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby unfill smeargle orgit mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+   '(cliphist vterm treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil ruby-hash-syntax lsp-ui emr list-utils editorconfig bui lsp-mode treemacs cfrs posframe package-lint all-the-icons prettier-js kubernetes-tramp kubernetes-evil kubernetes wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy counsel-projectile insert-shebang flycheck-bashate fish-mode company-shell groovy-mode groovy-imports company-anaconda yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms lsp-pyright live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-cscope xcscope cython-mode anaconda-mode blacken pythonic evil-commentary dockerfile-mode docker tablist json-mode docker-tramp json-snatcher json-reformat yaml-mode xkcd projectile-rails inflections feature-mode emojify emoji-cheat-sheet-plus company-terraform terraform-mode hcl-mode company-emoji toml-mode ron-mode racer helm-gtags ggtags flycheck-rust counsel-gtags counsel swiper ivy cargo rust-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht fasd xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help gruvbox-dark-theme go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby unfill smeargle orgit mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit git-commit with-editor transient diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

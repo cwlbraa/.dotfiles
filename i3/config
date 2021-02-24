@@ -175,6 +175,8 @@ bindsym $mod+7 workspace $ws7; exec --no-startup-id ~/.dotfiles/scripts/ensure.s
 
 assign [class="Slack"] $ws8
 assign [class="discord"] $ws8
+assign [class="facebookmessenger-nativefier-7ab88e"] $ws8
+
 # bindsym $mod+8 workspace $ws8; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh slack Slack
 
 # Move focused container to workspace
@@ -318,6 +320,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk || redshift-gtk 37.8:-122.4
 
 # exec --no-startup-id start_conky_live_maia

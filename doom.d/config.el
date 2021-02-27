@@ -61,57 +61,44 @@
       :n "P" #'vterm-yank
       :n "p" #'vterm-yank)
 
-(defhydra hydra-smartparens (:hint nil)
-  "
- Moving^^^^                       Slurp & Barf^^   Wrapping^^            Sexp juggling^^^^               Destructive
-------------------------------------------------------------------------------------------------------------------------
- [_a_] beginning  [_n_] down      [_h_] bw slurp   [_R_]   rewrap        [_S_] split   [_t_] transpose   [_c_] change inner  [_w_] copy
- [_e_] end        [_N_] bw down   [_H_] bw barf    [_u_]   unwrap        [_s_] splice  [_A_] absorb      [_C_] change outer
- [_f_] forward    [_p_] up        [_l_] slurp      [_U_]   bw unwrap     [_r_] raise   [_E_] emit        [_k_] kill          [_g_] quit
- [_b_] backward   [_P_] bw up     [_L_] barf       [_(__{__[_] wrap (){}[]   [_j_] join    [_o_] convolute   [_K_] bw kill       [_q_] quit"
-  ;; Moving
-  ("a" sp-beginning-of-sexp)
-  ("e" sp-end-of-sexp)
-  ("f" sp-forward-sexp)
-  ("b" sp-backward-sexp)
-  ("n" sp-down-sexp)
-  ("N" sp-backward-down-sexp)
-  ("p" sp-up-sexp)
-  ("P" sp-backward-up-sexp)
+(defhydra hydra-smartparens ()
+  "Smartparens"
 
-  ;; Slurping & barfing
-  ("h" sp-backward-slurp-sexp)
-  ("H" sp-backward-barf-sexp)
-  ("l" sp-forward-slurp-sexp)
-  ("L" sp-forward-barf-sexp)
+  ("t" sp-transpose-sexp "transpose")
+  ("y" sp-copy-sexp "yank")
+  ("d" sp-kill-sexp "delete")
+
+  ("s" sp-forward-slurp-sexp "slurp right")
+  ("S" sp-backward-slurp-sexp "slurp left")
+
+  ("b" sp-forward-barf-sexp "barf right")
+  ("B" sp-backward-barf-sexp "barf left")
+
+  ("v" sp-select-next-thing "next")
+  ("V" sp-select-previous-thing "prev")
 
   ;; Wrapping
-  ("R" sp-rewrap-sexp)
-  ("u" sp-unwrap-sexp)
-  ("U" sp-backward-unwrap-sexp)
-  ("(" sp-wrap-round)
-  ("{" sp-wrap-curly)
-  ("[" sp-wrap-square)
+  ("w" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")) "wrap")
+  ("W" sp-unwrap-sexp "unwrap")
 
-  ;; Sexp juggling
-  ("S" sp-split-sexp)
-  ("s" sp-splice-sexp)
-  ("r" sp-raise-sexp)
-  ("j" sp-join-sexp)
-  ("t" sp-transpose-sexp)
-  ("A" sp-absorb-sexp)
-  ("E" sp-emit-sexp)
-  ("o" sp-convolute-sexp)
+  ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
+  ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
+  ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
+  ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
 
-  ;; Destructive editing
-  ("c" sp-change-inner :exit t)
-  ("C" sp-change-enclosing :exit t)
-  ("k" sp-kill-sexp)
-  ("K" sp-backward-kill-sexp)
-  ("w" sp-copy-sexp)
+  ;; Movement
+  ("j" sp-next-sexp)
+  ("k" sp-backward-sexp)
+  ("J" sp-down-sexp)
+  ("K" sp-backward-up-sexp)
 
-  ("q" nil)
-  ("g" nil))
+  ("l" sp-forward-symbol)
+  ("h" sp-backward-symbol)
+
+  ("^" sp-beginning-of-sexp)
+  ("$" sp-end-of-sexp)
+  ("q" nil))
+
 (map! :leader :desc "smartparens keys" :nv "k" #'hydra-smartparens/body)
 
 ;; Here are some additional functions/macros that could help you configure Doom:

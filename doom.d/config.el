@@ -37,46 +37,22 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-(use-package autorevert
-  :defer t
-  :ensure nil
-  :config
-  (global-auto-revert-mode +1)
-  (setq auto-revert-interval 2
-        auto-revert-check-vc-info t
-        auto-revert-verbose nil))
+(use-package evil-surround
+  :config (global-evil-surround-mode 1))
 
 (use-package dired
   :defer t
-  :ensure nil
   :custom
   ;; Always delete and copy recursively
   (dired-recursive-deletes 'always)
   (dired-recursive-copies 'always)
-  ;; Auto refresh Dired, but be quiet about it
-  (global-auto-revert-non-file-buffers t)
-  (auto-revert-verbose nil)
   ;; Quickly copy/move file in Dired
   (dired-dwim-target t)
   ;; Move files to trash when deleting
   (delete-by-moving-to-trash t)
   ;; Load the newest version of a file
-  (load-prefer-newer t)
-  ;; Detect external file changes and auto refresh file
-  (auto-revert-use-notify nil)
-  (auto-revert-interval 3)              ; Auto revert every 3 sec
-  :config
-  ;; Enable global auto-revert
-  (global-auto-revert-mode t)
-  ;; Reuse same dired buffer, to prevent numerous buffers while navigating in dired
-  (put 'dired-find-alternate-file 'disabled nil)
-  :hook
-  (dired-mode . (lambda ()
-                  (dired-hide-details-mode)
-                  (local-set-key (kbd "<mouse-2>") #'dired-find-alternate-file)
-                  (local-set-key (kbd "RET") #'dired-find-alternate-file)
-                  (local-set-key (kbd "^")
-                                 (lambda () (interactive) (find-alternate-file ".."))))))
+  (load-prefer-newer t))
+
 (after! dired
   (map! :n "-" 'dired-jump))
 
@@ -84,6 +60,59 @@
 (map! :map vterm-mode-map
       :n "P" #'vterm-yank
       :n "p" #'vterm-yank)
+
+(defhydra hydra-smartparens (:hint nil)
+  "
+ Moving^^^^                       Slurp & Barf^^   Wrapping^^            Sexp juggling^^^^               Destructive
+------------------------------------------------------------------------------------------------------------------------
+ [_a_] beginning  [_n_] down      [_h_] bw slurp   [_R_]   rewrap        [_S_] split   [_t_] transpose   [_c_] change inner  [_w_] copy
+ [_e_] end        [_N_] bw down   [_H_] bw barf    [_u_]   unwrap        [_s_] splice  [_A_] absorb      [_C_] change outer
+ [_f_] forward    [_p_] up        [_l_] slurp      [_U_]   bw unwrap     [_r_] raise   [_E_] emit        [_k_] kill          [_g_] quit
+ [_b_] backward   [_P_] bw up     [_L_] barf       [_(__{__[_] wrap (){}[]   [_j_] join    [_o_] convolute   [_K_] bw kill       [_q_] quit"
+  ;; Moving
+  ("a" sp-beginning-of-sexp)
+  ("e" sp-end-of-sexp)
+  ("f" sp-forward-sexp)
+  ("b" sp-backward-sexp)
+  ("n" sp-down-sexp)
+  ("N" sp-backward-down-sexp)
+  ("p" sp-up-sexp)
+  ("P" sp-backward-up-sexp)
+
+  ;; Slurping & barfing
+  ("h" sp-backward-slurp-sexp)
+  ("H" sp-backward-barf-sexp)
+  ("l" sp-forward-slurp-sexp)
+  ("L" sp-forward-barf-sexp)
+
+  ;; Wrapping
+  ("R" sp-rewrap-sexp)
+  ("u" sp-unwrap-sexp)
+  ("U" sp-backward-unwrap-sexp)
+  ("(" sp-wrap-round)
+  ("{" sp-wrap-curly)
+  ("[" sp-wrap-square)
+
+  ;; Sexp juggling
+  ("S" sp-split-sexp)
+  ("s" sp-splice-sexp)
+  ("r" sp-raise-sexp)
+  ("j" sp-join-sexp)
+  ("t" sp-transpose-sexp)
+  ("A" sp-absorb-sexp)
+  ("E" sp-emit-sexp)
+  ("o" sp-convolute-sexp)
+
+  ;; Destructive editing
+  ("c" sp-change-inner :exit t)
+  ("C" sp-change-enclosing :exit t)
+  ("k" sp-kill-sexp)
+  ("K" sp-backward-kill-sexp)
+  ("w" sp-copy-sexp)
+
+  ("q" nil)
+  ("g" nil))
+(map! :leader :desc "smartparens keys" :nv "k" #'hydra-smartparens/body)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -53,8 +53,7 @@
   ;; Load the newest version of a file
   (load-prefer-newer t))
 
-(after! dired
-  (map! :n "-" 'dired-jump))
+(map! :n "-" 'dired-jump)
 
 (add-hook 'vterm-mode-hook #'goto-address-mode)
 (map! :map vterm-mode-map
@@ -100,6 +99,19 @@
   ("q" nil))
 
 (map! :leader :desc "smartparens keys" :nv "k" #'hydra-smartparens/body)
+
+(map! (:leader (:desc "leetcode" :prefix "l"
+                :desc "leetcode" :g "l" #'leetcode
+                :desc "refresh" :g "r" #'leetcode-refresh
+                :desc "submit" :g "s" #'leetcode-submit
+                :desc "solve" :g "S" #'leetcode-solve-current-problem
+                :desc "try" :g "t" #'leetcode-try
+                :desc "preferred language" :g "p" #'leetcode-set-prefer-language
+                :desc "problem" :g "P" #'leetcode-show-current-problem
+                :desc "quit" :g "q" #'leetcode-quit)))
+
+(setq leetcode-save-solutions t)
+(setq leetcode-directory "~/workspace/leetcode")
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

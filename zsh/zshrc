@@ -91,6 +91,4 @@ antigen apply
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_R_OPTS='--sort'
 
-. /etc/profile
-
 eval "$(direnv hook zsh)"

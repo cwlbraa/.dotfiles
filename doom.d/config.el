@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(load-theme 'doom-gruvbox t)
+(load-theme 'doom-gruvbox-light t)
 (set-face-foreground 'mouse "white")
 (set-face-background 'mouse "white")
 
@@ -112,6 +112,8 @@
 
 (setq leetcode-save-solutions t)
 (setq leetcode-directory "~/workspace/leetcode")
+(after! persp-mode
+  (remove-hook 'persp-add-buffer-on-after-change-major-mode-filter-functions #'doom-unreal-buffer-p))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -16,7 +16,7 @@
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]
 	name = Connor Braa
-	email = cbraa@vmware.com
+	email = connor.braa@gmail.com
 [init]
 	templatedir = ~/.dotfiles/git_template
 [mergetool "fugitive"]
@@ -25,7 +25,5 @@
 	tool = fugitive
 [core]
 	trustctime = false
-[gitlab "gitlab.eng.vmware.com/api/v4"]
-	user = cbraa
 [github]
 	user = cwlbraa

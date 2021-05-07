@@ -9,6 +9,9 @@
 (setq user-full-name "Connor Braa"
       user-mail-address "connor.braa@gmail.com")
 
+(map! :leader "SPC" nil)
+(setq doom-localleader-key "SPC SPC")
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -28,6 +31,12 @@
 (load-theme 'doom-gruvbox-light t)
 (set-face-foreground 'mouse "white")
 (set-face-background 'mouse "white")
+
+;; stolen from @lccambiaghi
+(after! projectile
+  (setq projectile-project-root-files '("Dockerfile" "pyproject.toml")))
+(set-popup-rule! "^\\*lsp-help" :side 'right :size .50 :select t :vslot 1)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -54,6 +63,7 @@
   (load-prefer-newer t))
 
 (map! :n "-" 'dired-jump)
+(map! :leader :desc "swap window between implementation and test" "tt" 'projectile-toggle-between-implementation-and-test)
 
 (add-hook 'vterm-mode-hook #'goto-address-mode)
 (map! :map vterm-mode-map

@@ -22,8 +22,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -110,20 +110,41 @@
 
 (map! :leader :desc "smartparens keys" :nv "k" #'hydra-smartparens/body)
 
+;; L33tCode
+
 (map! (:leader (:desc "leetcode" :prefix "l"
-                :desc "leetcode" :g "l" #'leetcode
-                :desc "refresh" :g "r" #'leetcode-refresh
-                :desc "submit" :g "s" #'leetcode-submit
-                :desc "solve" :g "S" #'leetcode-solve-current-problem
-                :desc "try" :g "t" #'leetcode-try
-                :desc "preferred language" :g "p" #'leetcode-set-prefer-language
-                :desc "problem" :g "P" #'leetcode-show-current-problem
-                :desc "quit" :g "q" #'leetcode-quit)))
+                   :desc "leetcode" :g "l" #'leetcode
+                   :desc "refresh" :g "r" #'leetcode-refresh
+                   :desc "submit" :g "s" #'leetcode-submit
+                   :desc "solve" :g "S" #'leetcode-solve-current-problem
+                   :desc "try" :g "t" #'leetcode-try
+                   :desc "preferred language" :g "p" #'leetcode-set-prefer-language
+                   :desc "problem" :g "P" #'leetcode-show-current-problem
+                   :desc "quit" :g "q" #'leetcode-quit)))
 
 (setq leetcode-save-solutions t)
 (setq leetcode-directory "~/workspace/leetcode")
 (after! persp-mode
   (remove-hook 'persp-add-buffer-on-after-change-major-mode-filter-functions #'doom-unreal-buffer-p))
+
+;; Bazel
+(use-package! bazel-mode
+ :defer t
+ :commands bazel-mode
+ :init
+ (add-to-list 'auto-mode-alist '("BUILD\\(\\.bazel\\)?\\'" . bazel-mode))
+ (add-to-list 'auto-mode-alist '("WORKSPACE\\'" . bazel-mode))
+ :config
+ ;; disable format-all becuase it doesn't sort BUILD list variables
+ (setq bazel-mode-buildifier-before-save t)
+ (appendq! +format-on-save-enabled-modes '(bazel-mode)));
+
+;; jsonnet
+(use-package! jsonnet-mode
+  :defer t
+  :config
+  (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?}))
+  (setq jsonnet-use-smie t))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

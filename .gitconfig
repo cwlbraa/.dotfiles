@@ -16,7 +16,7 @@
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]
 	name = Connor Braa
-	email = connor.braa@gmail.com
+	email = cbraa@brex.com
 [init]
 	templatedir = ~/.dotfiles/git_template
 [mergetool "fugitive"]
@@ -27,3 +27,14 @@
 	trustctime = false
 [github]
 	user = cwlbraa
+[url "git@github.com:"]
+	insteadOf = https://github.com
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

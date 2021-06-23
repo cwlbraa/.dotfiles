@@ -92,3 +92,4 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export FZF_CTRL_R_OPTS='--sort'
 
 eval "$(direnv hook zsh)"
+eval "$(nodenv init -)"

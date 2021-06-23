@@ -170,6 +170,9 @@ bindsym $mod+1 workspace $ws1; exec --no-startup-id ~/.dotfiles/scripts/ensure.s
 
 bindsym $mod+2 workspace $ws2; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh "brave" Brave-browser
 
+
+assign [class="jetbrains-idea-ce"] $ws3
+
 assign [class="Google Play Music Desktop Player"] $ws7
 bindsym $mod+7 workspace $ws7; exec --no-startup-id ~/.dotfiles/scripts/ensure.sh gpmdp "Google Play Music Desktop Player"
 
@@ -313,7 +316,7 @@ exec --no-startup-id xautolock -time 30 -detectsleep -locker light-locker-comman
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray

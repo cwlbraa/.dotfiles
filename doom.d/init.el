@@ -112,7 +112,7 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data                     ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
-       elixir            ; erlang done right
+       (elixir +lsp)            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp                       ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
@@ -126,10 +126,10 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json  ; At least it ain't XML
-       ;; (java +meghanada) ; the poster child for carpal tunnel syndrome
+       (java +meghanada) ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
-       (kotlin +lsp)            ; a better, slicker Java(Script)
+       kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor

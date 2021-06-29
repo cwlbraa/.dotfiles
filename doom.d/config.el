@@ -65,6 +65,8 @@
 (map! :n "-" 'dired-jump)
 (map! :leader :desc "swap window between implementation and test" "tt" 'projectile-toggle-between-implementation-and-test)
 
+;(setq vterm-always-compile-module t)
+(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
 (add-hook 'vterm-mode-hook #'goto-address-mode)
 (map! :map vterm-mode-map
       :n "P" #'vterm-yank
@@ -138,6 +140,15 @@
  ;; disable format-all becuase it doesn't sort BUILD list variables
  (setq bazel-mode-buildifier-before-save t)
  (appendq! +format-on-save-enabled-modes '(bazel-mode)));
+
+;; Elixir-ls and kotlin
+(use-package! lsp-mode
+  :ensure t
+  :diminish lsp-mode
+  :hook
+  (elixir-mode . lsp)
+  :init
+  (add-to-list 'exec-path "~/ws/elixir-ls"))
 
 ;; jsonnet
 (use-package! jsonnet-mode

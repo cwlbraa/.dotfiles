@@ -1,10 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # zsh setup, modified from ~/.bash_profile
 #
 # export TERM=xterm-256color
 
-# source etc profile for wide compatibility with other unixes
-. /etc/profile
-
+# source etc profile for wide compatibility with other unixes . /etc/profile
 # get directory this script is in
 SOURCE=${(%):-%N}
 while [ -h "$SOURCE" ]; do
@@ -12,19 +17,18 @@ while [ -h "$SOURCE" ]; do
   SOURCE="$(readlink "$SOURCE")"
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+export ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # path extensions
-export GOROOT=/usr/lib/go/
+case "$(uname -s)" in
+    Linux*)     export GOROOT=/usr/lib/go/;;
+esac
+
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/lib/go/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
-
-# cloud stuff
-export GCR_REPO="gcr.io/braa-296019"
-export KO_DOCKER_REPO=registry.local:5000
-export CLOUDSDK_COMPUTE_ZONE="us-west1-a"
+export PATH=$HOME/Library/Python/3.8/bin:$PATH
 
 export BROWSER=brave.desktop
 export EDITOR="vi"
@@ -49,21 +53,11 @@ fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 
-# # OSX-only for the moment
-# # zsh completion from google-built CLIs doesn't play well with antigen
-# # to get it working, preemptively load the compinit&compdef and use them to load completion functions
-# # if any of these scripts are broken, they'll fail silently
-# export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python/libexec/bin/python"
-# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-# autoload -U compinit compdef
-# compinit
-# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-
 ### antigen - zsh package manager {{{
 source $ZDOT_DIR/antigen/antigen.zsh
 
 antigen use oh-my-zsh
-antigen theme https://gist.github.com/f769ad4b37239fac19fc3cc5f1099c26.git agnoster-n # prompt with newline
+antigen theme romkatv/powerlevel10k # prompt with newline
 antigen bundle archlinux
 antigen bundle aws
 antigen bundle colored-man-pages
@@ -91,5 +85,13 @@ antigen apply
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_R_OPTS='--sort'
 
+eval "$(fasd --init auto)"
 eval "$(direnv hook zsh)"
 eval "$(nodenv init -)"
+. /usr/local/opt/asdf/asdf.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    . $ZDOT_DIR/vterm_helpers.zsh
+fi

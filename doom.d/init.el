@@ -18,20 +18,20 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company +childframe) ; the ultimate code completion backend
-       (ivy +fuzzy +prescient +icons)   ; a search engine for love and life
+       (company +tng) ; the ultimate code completion backend
+       ; (ivy +prescient +icons)   ; a search engine for love and life
+       (vertico +icons)
 
        :ui
-       ;;deft              ; notational velocity for Emacs
+       ; deft              ; notational velocity for Emacs
        doom            ; what makes DOOM look the way it does
        doom-dashboard  ; a nifty splash screen for Emacs
        doom-quit       ; DOOM quit-message prompts when you quit Emacs
-       ;;(emoji +unicode)  ; 🙂
-       ;;fill-column       ; a `fill-column' indicator
+       (emoji +unicode)  ; 🙂
        hl-todo         ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
-       ;;indent-guides   ; highlighted indent columns
-       ligatures       ; ligatures and symbols to make your code pretty again
+       ;; indent-guides   ; highlighted indent columns
+       (ligatures +extra)       ; ligatures and symbols to make your code pretty again
        minimap           ; show a map of the code on the side
        modeline    ; snazzy, Atom-inspired modeline, plus API
        ;;nav-flash         ; blink cursor line after big motions
@@ -40,7 +40,7 @@
        (popup +defaults)          ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
        ;;treemacs          ; a project drawer, like neotree but cooler
-       ;;unicode           ; extended unicode support for various languages
+       unicode           ; extended unicode support for various languages
        vc-gutter                        ; vcs diff in the fringe
        vi-tilde-fringe                  ; fringe tildes to mark beyond EOB
        ;; (window-select :numbers)         ; visually switch windows
@@ -72,9 +72,7 @@
        vterm                            ; the best terminal emulation in Emacs
 
        :checkers
-       syntax        ; tasing you for every semicolon you forget
-       ;;(spell +flyspell) ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       (syntax +childframe)        ; tasing you for every semicolon you forget
 
        :tools
        ;;ansible
@@ -85,8 +83,8 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)       ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       lookup                         ; navigate your code and its documentation
-       lsp
+       (lookup +docsets)                         ; navigate your code and its documentation
+       (lsp +peek)
        (magit +forge)                    ; a git porcelain for Emacs
        make                     ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -143,7 +141,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +poetry +lsp +pyright)           ; beautiful is better than ugly
+       (python +lsp +pyright)           ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6

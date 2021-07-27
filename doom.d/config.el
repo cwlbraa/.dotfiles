@@ -9,6 +9,16 @@
 (setq user-full-name "Connor Braa"
       user-mail-address "connor.braa@gmail.com")
 
+(setq gc-cons-threshold 120000000)
+(setq read-process-output-max (* 4 1024 1024))
+
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            elixir-mode))    ; format-all doesn't work right in umbrella apps
+
 (map! :leader "SPC" nil)
 (setq doom-localleader-key "SPC SPC")
 
@@ -28,13 +38,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(load-theme 'doom-gruvbox-light t)
+(load-theme 'doom-gruvbox t)
 (set-face-foreground 'mouse "white")
 (set-face-background 'mouse "white")
 
 ;; stolen from @lccambiaghi
 (after! projectile
-  (setq projectile-project-root-files '("Dockerfile" "pyproject.toml")))
+  (setq projectile-project-root-files '("Dockerfile" "pyproject.toml"))
+  (add-to-list 'projectile-project-root-files-bottom-up "mix.exs"))
+
 (set-popup-rule! "^\\*lsp-help" :side 'right :size .50 :select t :vslot 1)
 
 
@@ -66,7 +78,7 @@
 (map! :leader :desc "swap window between implementation and test" "tt" 'projectile-toggle-between-implementation-and-test)
 
 ;(setq vterm-always-compile-module t)
-(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
+;(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 (add-hook 'vterm-mode-hook #'goto-address-mode)
 (map! :map vterm-mode-map
       :n "P" #'vterm-yank
@@ -115,14 +127,14 @@
 ;; L33tCode
 
 (map! (:leader (:desc "leetcode" :prefix "l"
-                   :desc "leetcode" :g "l" #'leetcode
-                   :desc "refresh" :g "r" #'leetcode-refresh
-                   :desc "submit" :g "s" #'leetcode-submit
-                   :desc "solve" :g "S" #'leetcode-solve-current-problem
-                   :desc "try" :g "t" #'leetcode-try
-                   :desc "preferred language" :g "p" #'leetcode-set-prefer-language
-                   :desc "problem" :g "P" #'leetcode-show-current-problem
-                   :desc "quit" :g "q" #'leetcode-quit)))
+                :desc "leetcode" :g "l" #'leetcode
+                :desc "refresh" :g "r" #'leetcode-refresh
+                :desc "submit" :g "s" #'leetcode-submit
+                :desc "solve" :g "S" #'leetcode-solve-current-problem
+                :desc "try" :g "t" #'leetcode-try
+                :desc "preferred language" :g "p" #'leetcode-set-prefer-language
+                :desc "problem" :g "P" #'leetcode-show-current-problem
+                :desc "quit" :g "q" #'leetcode-quit)))
 
 (setq leetcode-save-solutions t)
 (setq leetcode-directory "~/workspace/leetcode")
@@ -131,24 +143,25 @@
 
 ;; Bazel
 (use-package! bazel-mode
- :defer t
- :commands bazel-mode
- :init
- (add-to-list 'auto-mode-alist '("BUILD\\(\\.bazel\\)?\\'" . bazel-mode))
- (add-to-list 'auto-mode-alist '("WORKSPACE\\'" . bazel-mode))
- :config
- ;; disable format-all becuase it doesn't sort BUILD list variables
- (setq bazel-mode-buildifier-before-save t)
- (appendq! +format-on-save-enabled-modes '(bazel-mode)));
-
-;; Elixir-ls and kotlin
-(use-package! lsp-mode
-  :ensure t
-  :diminish lsp-mode
-  :hook
-  (elixir-mode . lsp)
+  :defer t
+  :commands bazel-mode
   :init
+  (add-to-list 'auto-mode-alist '("BUILD\\(\\.bazel\\)?\\'" . bazel-mode))
+  (add-to-list 'auto-mode-alist '("WORKSPACE\\'" . bazel-mode))
+  :config
+  ;; disable format-all becuase it doesn't sort BUILD list variables
+  (setq bazel-mode-buildifier-before-save t)
+  (appendq! +format-on-save-enabled-modes '(bazel-mode)));
+
+;; Elixir-ls
+(after! lsp-mode
   (add-to-list 'exec-path "~/ws/elixir-ls"))
+  ;(add-to-list 'lsp-file-watch-ignored-directories (concat (getenv "HOME") "/ws/credit_card")))
+  
+; i'd like to run elixir-formate on save but it never works
+(add-hook 'elixir-mode-hook
+          (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+(add-hook! 'elixir-mode-hook (modify-syntax-entry ?_ "w"))
 
 ;; jsonnet
 (use-package! jsonnet-mode

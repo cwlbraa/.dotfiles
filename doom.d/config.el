@@ -9,9 +9,6 @@
 (setq user-full-name "Connor Braa"
       user-mail-address "connor.braa@gmail.com")
 
-(setq gc-cons-threshold 120000000)
-(setq read-process-output-max (* 4 1024 1024))
-
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
             sql-mode         ; sqlformat is currently broken
@@ -126,7 +123,7 @@
 
 ;; L33tCode
 
-(map! (:leader (:desc "leetcode" :prefix "l"
+(map! (:leader (:desc "leetcode" :prefix ("l" . "leetcode")
                 :desc "leetcode" :g "l" #'leetcode
                 :desc "refresh" :g "r" #'leetcode-refresh
                 :desc "submit" :g "s" #'leetcode-submit
@@ -142,7 +139,7 @@
   (remove-hook 'persp-add-buffer-on-after-change-major-mode-filter-functions #'doom-unreal-buffer-p))
 
 ;; Bazel
-(use-package! bazel-mode
+(use-package! bazel
   :defer t
   :commands bazel-mode
   :init
@@ -150,7 +147,7 @@
   (add-to-list 'auto-mode-alist '("WORKSPACE\\'" . bazel-mode))
   :config
   ;; disable format-all becuase it doesn't sort BUILD list variables
-  (setq bazel-mode-buildifier-before-save t)
+  (setq bazel-buildifier-before-save t)
   (appendq! +format-on-save-enabled-modes '(bazel-mode)));
 
 ;; Elixir-ls
@@ -158,7 +155,6 @@
   (add-to-list 'exec-path "~/ws/elixir-ls"))
   ;(add-to-list 'lsp-file-watch-ignored-directories (concat (getenv "HOME") "/ws/credit_card")))
   
-; i'd like to run elixir-formate on save but it never works
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 (add-hook! 'elixir-mode-hook (modify-syntax-entry ?_ "w"))
@@ -169,6 +165,21 @@
   :config
   (set-electric! 'jsonnet-mode :chars '(?\n ?: ?{ ?}))
   (setq jsonnet-use-smie t))
+
+; protobuf-mode
+(defconst twospace
+    '((c-basic-offset . 2)
+      (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "protostyle" twospace t)))
+
+(setq flycheck-protoc-import-path
+      (list (concat (getenv "HOME") "/ws/credit_card/")
+            (concat (getenv "HOME") "/ws/protobuf-elixir/src/")))
+
+(setq gc-cons-threshold 120000000)
+(setq read-process-output-max (* 4 1024 1024))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -25,6 +25,7 @@
 	tool = fugitive
 [core]
 	trustctime = false
+	untrackedCache = true
 [github]
 	user = cwlbraa
 [url "git@github.com:"]

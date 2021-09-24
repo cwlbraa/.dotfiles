@@ -16,8 +16,12 @@
             latex-mode
             elixir-mode))    ; format-all doesn't work right in umbrella apps
 
+;; I prefer SPC SPC as local leader, setting that does obscure
+;; projectile-find-file a lil bit, so I move those under SPC f
 (map! :leader "SPC" nil)
 (setq doom-localleader-key "SPC SPC")
+(map! :leader :desc "Find file in project" "fp" 'projectile-find-file)
+(map! :leader :desc "Find file in other project" "fP" 'doom/find-file-in-other-project)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:

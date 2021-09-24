@@ -43,12 +43,11 @@
 (set-face-foreground 'mouse "white")
 (set-face-background 'mouse "white")
 
-;; stolen from @lccambiaghi
-(after! projectile
-  (setq projectile-project-root-files '("Dockerfile" "pyproject.toml"))
-  (add-to-list 'projectile-project-root-files-bottom-up "mix.exs"))
-
-(set-popup-rule! "^\\*lsp-help" :side 'right :size .50 :select t :vslot 1)
+;; ;; projectile elixir project monorepo override
+;; ;; stolen from @lccambiaghi
+;; (after! projectile
+;;   (setq projectile-project-root-files '("Dockerfile" "pyproject.toml"))
+;;   (add-to-list 'projectile-project-root-files-bottom-up "mix.exs"))
 
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -155,10 +154,21 @@
   (appendq! +format-on-save-enabled-modes '(bazel-mode)));
 
 ;; Elixir-ls
-(after! lsp-mode
-  (add-to-list 'exec-path "~/ws/elixir-ls"))
-  ;(add-to-list 'lsp-file-watch-ignored-directories (concat (getenv "HOME") "/ws/credit_card")))
-  
+;; project.el elixir project monorepo override
+(defun elixir-project-override (dir)
+  (let ((override (locate-dominating-file dir "mix.exs")))
+    (if override
+      (cons 'vc override)
+      nil)))
+
+(use-package! project
+  :config
+  (add-hook 'project-find-functions #'elixir-project-override))
+
+(require 'eglot)
+(add-to-list 'eglot-server-programs '(elixir-mode "~/ws/elixir-ls-2/language_server.sh"))
+(add-hook! 'elixir-mode-hook 'eglot-ensure)
+
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 (add-hook! 'elixir-mode-hook (modify-syntax-entry ?_ "w"))

@@ -38,9 +38,8 @@ export EDITOR="vi"
 alias emcc="emacsclient -c"
 alias emc="emacsclient -n"
 alias emct="emacsclient -tc"
-alias vim="emacsclient -tc"
-export GIT_EDITOR="emacsclient -tc"
-export VISUAL="emacsclient -tc"
+export GIT_EDITOR="nvim"
+export VISUAL="nvim"
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
@@ -101,3 +100,4 @@ eval "$(nodenv init -)"
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     . $ZDOT_DIR/vterm_helpers.zsh
 fi
+export PATH="/usr/local/sbin:$PATH"

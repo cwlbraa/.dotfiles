@@ -43,7 +43,7 @@ export VISUAL="nvim"
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
-alias reload='. ~/.zshrc && antigen reset && zsh'
+alias reload='. ~/.zshrc && antigen reset && src'
 alias venv='source venv/bin/activate'
 alias gst='git status'
 alias gapa='git add -p'
@@ -76,10 +76,12 @@ antigen bundle fzf
 antigen bundle gcloud
 antigen bundle gitfast # no aliases, just fast bits for prompt integration
 antigen bundle golang
+antigen bundle jira
 antigen bundle kubectl
 antigen bundle minikube
 antigen bundle osx
 antigen bundle sudo
+antigen bundle zsh_reload
 antigen bundle zsh-interactive-cd # uses fzf
 antigen bundle zsh-users/zsh-history-substring-search # up arrow
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -93,7 +95,10 @@ export FZF_CTRL_R_OPTS='--sort'
 eval "$(fasd --init auto)"
 eval "$(direnv hook zsh)"
 eval "$(nodenv init -)"
-. /usr/local/opt/asdf/asdf.sh
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  . /usr/local/opt/asdf/asdf.sh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

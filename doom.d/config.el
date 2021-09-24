@@ -153,6 +153,13 @@
   (setq bazel-buildifier-before-save t)
   (appendq! +format-on-save-enabled-modes '(bazel-mode)));
 
+;; added keybind to open file in github
+(use-package! git-link
+  :custom
+  (git-link-open-in-browser t))
+
+(map! :leader :desc "Open file in browser" :g "gh" #'git-link)
+
 ;; Elixir-ls
 ;; project.el elixir project monorepo override
 (defun elixir-project-override (dir)
@@ -172,7 +179,7 @@
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 (add-hook! 'elixir-mode-hook (modify-syntax-entry ?_ "w"))
-(setq 'eglot-extend-to-xref t)
+(setq eglot-extend-to-xref t)
 
 ;; jsonnet
 (use-package! jsonnet-mode

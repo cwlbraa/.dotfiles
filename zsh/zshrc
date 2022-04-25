@@ -38,12 +38,13 @@ export EDITOR="vi"
 alias e="emacsclient -n"
 alias emc="emacsclient -n"
 alias emcc="emacsclient -c"
-alias emct="emacsclient -tc"
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"        # $EDITOR opens in terminal
+export GIT_EDITOR='emacsclient -t'
 export VISUAL='emacsclient -n -a ""'  # $VISUAL opens in GUI mode
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-  export EDITOR='emacsclient -n -a ""'        # $EDITOR opens in terminal
+  export EDITOR='emacsclient -a ""'        # $EDITOR opens in terminal
+  export GIT_EDITOR='emacsclient -a ""'        # $EDITOR opens in terminal
 fi
 
 # aliases

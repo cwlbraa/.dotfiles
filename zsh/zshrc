@@ -5,10 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# zsh setup, modified from ~/.bash_profile
-#
-# export TERM=xterm-256color
-
 # source etc profile for wide compatibility with other unixes . /etc/profile
 # get directory this script is in
 SOURCE=${(%):-%N}
@@ -24,15 +20,18 @@ case "$(uname -s)" in
     Linux*)     export GOROOT=/usr/lib/go/;;
 esac
 
-export PATH=$HOME/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/lib/go/bin:$PATH
+
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/Library/Python/3.8/bin:$PATH
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$(npm bin -g):$PATH"
+export PATH=$HOME/bin:$PATH
 
-export BROWSER=brave.desktop
+export BROWSER=firefox.desktop
 export EDITOR="vi"
 
 alias emcc="emacsclient -c"
@@ -48,15 +47,15 @@ alias venv='source venv/bin/activate'
 alias gst='git status'
 alias gapa='git add -p'
 alias gcpa='git checkout -p'
-
-# elixir dev vars
-export APP_ENV=dev
-export DATABASE_HOST=localhost
-
+alias b='brexctl'
 fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
+
+# elixir dev vars
+export APP_ENV=dev
+export DATABASE_HOST=localhost
 
 ### antigen - zsh package manager {{{
 source $ZDOT_DIR/antigen/antigen.zsh
@@ -65,11 +64,12 @@ antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k # prompt with newline
 antigen bundle archlinux
 antigen bundle aws
+antigen bundle bazel
 antigen bundle colored-man-pages
 antigen bundle command-not-found
 antigen bundle common-aliases
-antigen bundle copydir
 antigen bundle copyfile
+antigen bundle copypath
 antigen bundle docker
 antigen bundle fasd # for z
 antigen bundle fzf
@@ -78,10 +78,9 @@ antigen bundle gitfast # no aliases, just fast bits for prompt integration
 antigen bundle golang
 antigen bundle jira
 antigen bundle kubectl
+antigen bundle macos
 antigen bundle minikube
-antigen bundle osx
 antigen bundle sudo
-antigen bundle zsh_reload
 antigen bundle zsh-interactive-cd # uses fzf
 antigen bundle zsh-users/zsh-history-substring-search # up arrow
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -102,7 +101,7 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-    . $ZDOT_DIR/vterm_helpers.zsh
-fi
-export PATH="/usr/local/sbin:$PATH"
+
+# if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+#     . $ZDOT_DIR/vterm_helpers.zsh
+# fi

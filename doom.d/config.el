@@ -33,8 +33,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 13))
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono")
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font")
+      doom-unicode-font (font-spec :family "MesloLGS NF"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -45,9 +46,9 @@
 
 ;; ;; projectile elixir project monorepo override
 ;; ;; stolen from @lccambiaghi
-;; (after! projectile
-;;   (setq projectile-project-root-files '("Dockerfile" "pyproject.toml"))
-;;   (add-to-list 'projectile-project-root-files-bottom-up "mix.exs"))
+(after! projectile
+  (setq projectile-project-root-files '("Dockerfile" "pyproject.toml"))
+  (add-to-list 'projectile-project-root-files-bottom-up "mix.exs"))
 
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -77,8 +78,8 @@
 (map! :n "-" 'dired-jump)
 (map! :leader :desc "swap window between implementation and test" "tt" 'projectile-toggle-between-implementation-and-test)
 
-;(setq vterm-always-compile-module t)
-;(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
+(setq vterm-always-compile-module t)
+(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 (add-hook 'vterm-mode-hook #'goto-address-mode)
 (map! :map vterm-mode-map
       :n "P" #'vterm-yank
@@ -181,6 +182,11 @@
 (add-hook! 'elixir-mode-hook (modify-syntax-entry ?_ "w"))
 (setq eglot-extend-to-xref t)
 
+(map! :after elixir-mode
+        :localleader
+        :map elixir-mode-map
+        "f" #'elixir-format)
+
 ;; jsonnet
 (use-package! jsonnet-mode
   :defer t
@@ -202,6 +208,13 @@
 
 (setq gc-cons-threshold 120000000)
 (setq read-process-output-max (* 4 1024 1024))
+
+;(add-to-list 'eglot-server-programs '(yaml-mode . ("yaml-language-server" "--stdio")))
+
+(setq exec-path (append exec-path '("/usr/local/Cellar/protobuf/3.17.3/bin")))
+
+;; (add-hook 'vterm-mode-hook  'with-editor-export-editor)
+;; (add-hook 'vterm-mode-hook  'with-editor-export-git-editor)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

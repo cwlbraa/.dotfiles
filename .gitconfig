@@ -7,25 +7,33 @@
 	sur = submodule update --init --recursive --jobs=7
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lo = "!git --no-pager log --graph --decorate --pretty=oneline --abbrev-commit --all -n10"
-	ctags = !$(git rev-parse --git-dir)/hooks/ctags
 	rebase = rebase --autosquash
 	rio = "!git rebase --autosquash -i origin/$(git rev-parse --abbrev-ref HEAD)"
-	riom = rebase --autosquash -i origin/master
-	pg = "!git push gerrit HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD); ~/.dotfiles/scripts/add-gerrit-reviewers"
+	riom = rebase --autosquash -i origin/main
 	fu = commit --fixup
+	bam = commit --amend --no-edit
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
+	fre = !git fetch -f --tags origin green-head:main && git rebase main
+	frep = !git fre && git push --force-with-lease
+	cob = "!f() { git fetch --tags origin green-head && git checkout green-head -b cbraa/$1; }; f"
 [user]
 	name = Connor Braa
 	email = cbraa@brex.com
 [init]
 	templatedir = ~/.dotfiles/git_template
-[mergetool "fugitive"]
-	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
-	tool = fugitive
+    tool = intellij
+[mergetool "intellij"]
+    cmd = /Applications/IntelliJ\\ IDEA\\ CE.app/Contents/MacOS/idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+    trustExitCode = true
+[diff]
+    tool = intellij
+[difftool "intellij"]
+    cmd = /Applications/IntelliJ\\ IDEA\\ CE.app/Contents/MacOS/idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
 [core]
 	trustctime = false
 	untrackedCache = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [github]
 	user = cwlbraa
 [url "git@github.com:"]
@@ -39,3 +47,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[interactive]
+	diffFilter = diff-so-fancy --patch

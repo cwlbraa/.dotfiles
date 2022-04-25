@@ -34,11 +34,17 @@ export PATH=$HOME/bin:$PATH
 export BROWSER=firefox.desktop
 export EDITOR="vi"
 
-alias emcc="emacsclient -c"
+
+alias e="emacsclient -n"
 alias emc="emacsclient -n"
+alias emcc="emacsclient -c"
 alias emct="emacsclient -tc"
-export GIT_EDITOR="nvim"
-export VISUAL="nvim"
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"        # $EDITOR opens in terminal
+export VISUAL='emacsclient -n -a ""'  # $VISUAL opens in GUI mode
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+  export EDITOR='emacsclient -n -a ""'        # $EDITOR opens in terminal
+fi
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
@@ -101,8 +107,3 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
-export GIT_EDITOR="emacsclient -c"                  # $EDITOR opens in terminal
-export VISUAL='emacsclient -c -a ""'         # $VISUAL opens in GUI mode

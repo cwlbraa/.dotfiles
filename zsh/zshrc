@@ -35,16 +35,18 @@ export BROWSER=firefox.desktop
 export EDITOR="vi"
 
 
+# no-wait for the shortest alias
+export ALTERNATE_EDITOR=""
 alias e="emacsclient -n"
 alias emc="emacsclient -n"
 alias emcc="emacsclient -c"
-export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"        # $EDITOR opens in terminal
 export GIT_EDITOR='emacsclient -t'
-export VISUAL='emacsclient -n -a ""'  # $VISUAL opens in GUI mode
+export VISUAL='emacsclient'  # $VISUAL opens in GUI mode
+# when inside of emacs, DO NOT USE tty, always open in the editor itself
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-  export EDITOR='emacsclient -a ""'        # $EDITOR opens in terminal
-  export GIT_EDITOR='emacsclient -a ""'        # $EDITOR opens in terminal
+  export EDITOR='emacsclient'
+  export GIT_EDITOR='emacsclient'
 fi
 
 # aliases

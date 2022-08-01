@@ -15,9 +15,16 @@ while [ -h "$SOURCE" ]; do
 done
 export ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-# path extensions
+# OS-specific
 case "$(uname -s)" in
-    Linux*)     export GOROOT=/usr/lib/go/;;
+    Linux*)
+      export GOROOT=/usr/lib/go/
+      export BROWSER=firefox.desktop
+      ;;
+    Darwin*)
+      . /usr/local/opt/asdf/asdf.sh
+      export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+    ;;
 esac
 
 export GOPATH=$HOME/go
@@ -31,7 +38,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$(npm bin -g):$PATH"
 export PATH=$HOME/bin:$PATH
 
-export BROWSER=firefox.desktop
 export EDITOR="vi"
 
 
@@ -42,6 +48,7 @@ alias emc="emacsclient -n"
 alias emcc="emacsclient -c"
 export EDITOR="emacsclient -t"        # $EDITOR opens in terminal
 export GIT_EDITOR='emacsclient -t'
+export K9S_EDITOR='emacsclient' # -t is kinda broken w/ yamls for some reason
 export VISUAL='emacsclient'  # $VISUAL opens in GUI mode
 # when inside of emacs, DO NOT USE tty, always open in the editor itself
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
@@ -63,7 +70,6 @@ type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
 type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 
 # elixir dev vars
-export APP_ENV=dev
 export DATABASE_HOST=localhost
 
 ### antigen - zsh package manager {{{
@@ -90,6 +96,7 @@ antigen bundle kubectl
 antigen bundle macos
 antigen bundle minikube
 antigen bundle sudo
+antigen bundle DarrinTisdale/zsh-aliases-exa
 antigen bundle zsh-interactive-cd # uses fzf
 antigen bundle zsh-users/zsh-history-substring-search # up arrow
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -103,10 +110,6 @@ export FZF_CTRL_R_OPTS='--sort'
 eval "$(fasd --init auto)"
 eval "$(direnv hook zsh)"
 eval "$(nodenv init -)"
-
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  . /usr/local/opt/asdf/asdf.sh
-fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

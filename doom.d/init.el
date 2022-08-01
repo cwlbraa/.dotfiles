@@ -157,7 +157,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
-       (yaml +lsp)                             ; JSON, but readable
+       yaml                             ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)

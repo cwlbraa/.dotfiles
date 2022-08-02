@@ -8,7 +8,15 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # link up git dotfiles to home dotfiles
 ln -sf $dir/.gitconfig ~/.gitconfig
 ln -sf $dir/zsh/zshrc ~/.zshrc
-ln -sf $dir/i3/config ~/.i3/config
-ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
 ln -sf $dir/Xresources ~/.Xresources
 ln -sf $dir/doom.d ~/.doom.d
+ln -sf $dir/.ideavimrc ~/.ideavimrc
+
+case "$(uname -s)" in
+    Linux*)
+        ln -sf $dir/i3/config ~/.i3/config
+        ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
+      ;;
+    Darwin*)
+    ;;
+esac

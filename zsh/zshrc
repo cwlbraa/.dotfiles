@@ -24,6 +24,7 @@ case "$(uname -s)" in
     Darwin*)
       . /usr/local/opt/asdf/asdf.sh
       export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+      eval "$(brew shellenv)"
     ;;
 esac
 

@@ -1,6 +1,5 @@
 tap "1password/tap"
 tap "adoptopenjdk/openjdk"
-tap "brexhq/brex", "git@github.com:brexhq/homebrew-brex.git"
 tap "buildpacks/tap"
 tap "chef/chef"
 tap "d12frosted/emacs-plus"
@@ -106,9 +105,6 @@ brew "wget"
 brew "yarn"
 brew "ykman"
 brew "yq"
-***REMOVED***
-brew "brexhq/brex/erlang"
-***REMOVED***
 brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-modern-doom3-icon", "with-native-comp", "with-no-frame-refocus", "with-no-titlebar"]
 brew "datawire/blackbird/telepresence"
 brew "datawire/blackbird/telepresence-legacy"

@@ -1,5 +1,0 @@
----
-apiVersion: ctlptl.dev/v1alpha1
-k9b2768e5748aind: Registry
-name: registry.local
-port: 5000

@@ -22,6 +22,8 @@
 (setq doom-localleader-key "SPC SPC")
 (map! :leader :desc "Find file in project" "fp" 'projectile-find-file)
 (map! :leader :desc "Find file in other project" "fP" 'doom/find-file-in-other-project)
+(setq projectile-sort-order 'recently-active)
+(setq projectile-indexing-method 'alien)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -163,19 +165,19 @@
 
 ;; Elixir-ls
 ;; project.el elixir project monorepo override
-(defun elixir-project-override (dir)
-  (let ((override (locate-dominating-file dir "mix.exs")))
-    (if override
-      (cons 'vc override)
-      nil)))
+;; (defun elixir-project-override (dir)
+;;   (let ((override (locate-dominating-file dir "mix.exs")))
+;;     (if override
+;;       (cons 'vc override)
+;;       nil)))
 
-(use-package! project
-  :config
-  (add-hook 'project-find-functions #'elixir-project-override))
+;; (use-package! project
+;;   :config
+;;   (add-hook 'project-find-functions #'elixir-project-override))
 
-(require 'eglot)
-(add-to-list 'eglot-server-programs '(elixir-mode "~/ws/elixir-ls-2/language_server.sh"))
-(add-hook! 'elixir-mode-hook 'eglot-ensure)
+;; (require 'eglot)
+;; (add-to-list 'eglot-server-programs '(elixir-mode "~/ws/elixir-ls-2/language_server.sh"))
+;; (add-hook! 'elixir-mode-hook 'eglot-ensure)
 
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))

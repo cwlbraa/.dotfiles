@@ -7,6 +7,7 @@
 	popen = !git fre && git push -u origin head && gh pr create -w 2>/dev/null
 	st = status
 	ci = commit
+	cm = commit -m
 	br = branch
 	co = checkout
 	cp = cherry-pick

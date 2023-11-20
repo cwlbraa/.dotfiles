@@ -24,7 +24,6 @@ case "$(uname -s)" in
       export BROWSER=firefox.desktop
       ;;
     Darwin*)
-      . /usr/local/opt/asdf/asdf.sh
       export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
       eval "$(/opt/homebrew/bin/brew shellenv)"
     ;;
@@ -41,23 +40,14 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$(npm bin -g):$PATH"
 export PATH=$HOME/bin:$PATH
 
-export EDITOR="vi"
+export EDITOR="nvim"
 
 
-# no-wait for the shortest alias
-export ALTERNATE_EDITOR=""
-alias e="emacsclient -n"
-alias emc="emacsclient -n"
-alias emcc="emacsclient -c"
-export EDITOR="emacsclient -t"        # $EDITOR opens in terminal
-export GIT_EDITOR='emacsclient -t'
-export K9S_EDITOR='emacsclient' # -t is kinda broken w/ yamls for some reason
-export VISUAL='emacsclient'  # $VISUAL opens in GUI mode
-# when inside of emacs, DO NOT USE tty, always open in the editor itself
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-  export EDITOR='emacsclient'
-  export GIT_EDITOR='emacsclient'
-fi
+alias vim="nvim"
+export EDITOR="nvim"        # $EDITOR opens in terminal
+export GIT_EDITOR='nvim'
+export K9S_EDITOR='nvim'
+export VISUAL='nvim'  # $VISUAL opens in GUI mode
 
 # aliases
 alias cleanswap='rm -rf /var/tmp/*.swp'
@@ -80,6 +70,7 @@ source $ZDOT_DIR/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k # prompt with newline
+antigen bundle asdf
 antigen bundle archlinux
 antigen bundle aws
 antigen bundle bazel

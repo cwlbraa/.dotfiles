@@ -9,7 +9,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -sf $dir/.gitconfig ~/.gitconfig
 ln -sf $dir/zsh/zshrc ~/.zshrc
 ln -sf $dir/Xresources ~/.Xresources
-ln -sf $dir/doom.d ~/.doom.d
+ln -sf $dir/nvim ~/.config/
 ln -sf $dir/.ideavimrc ~/.ideavimrc
 
 case "$(uname -s)" in

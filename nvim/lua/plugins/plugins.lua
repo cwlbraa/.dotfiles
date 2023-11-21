@@ -1,6 +1,7 @@
 return {
   { "akinsho/bufferline.nvim", enabled = false },
   { "folke/noice.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
   { "tpope/vim-commentary" },
   { "FabijanZulj/blame.nvim", keys = { { "<leader>gb", "<cmd>ToggleBlame<cr>", desc = "blame" } } },

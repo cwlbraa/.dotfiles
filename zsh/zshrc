@@ -108,7 +108,7 @@ export FZF_CTRL_R_OPTS='--sort'
 
 eval "$(fasd --init auto)"
 eval "$(direnv hook zsh)"
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

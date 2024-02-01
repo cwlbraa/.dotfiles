@@ -9,3 +9,4 @@ vim.o.expandtab = true
 vim.o.hidden = true
 vim.o.tabstop = 4
 vim.o.relativenumber = false
+vim.o.termguicolors = true

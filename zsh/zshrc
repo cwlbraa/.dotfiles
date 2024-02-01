@@ -39,6 +39,7 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$(npm bin -g):$PATH"
 export PATH=$HOME/bin:$PATH
+export CREDIT_CARD=$HOME/ws/credit_card/
 
 export EDITOR="nvim"
 
@@ -57,6 +58,7 @@ alias gst='git status'
 alias gapa='git add -p'
 alias gcpa='git checkout -p'
 alias b='brexctl'
+myb() { pushd $CREDIT_CARD; bazel run //foundation_platform/cli/cmd/brexctl -- $@; popd}
 fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'

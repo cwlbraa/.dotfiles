@@ -19,7 +19,7 @@ ln -sf $dir/.p10k.zsh ~/.p10k.zsh
 
 case "$(uname -s)" in
 Linux*)
-	mkdir -p ~/.config/.i3
+	mkdir -p ~/.i3/config
 	ln -sf $dir/i3/config ~/.i3/config
 	ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
 	apt update

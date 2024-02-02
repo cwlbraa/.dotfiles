@@ -22,8 +22,8 @@ Linux*)
 	mkdir -p ~/.i3/config
 	ln -sf $dir/i3/config ~/.i3/config
 	ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
-	apt update
-	apt install fasd
+	sudo apt update
+	sudo apt install fasd
 	;;
 Darwin*) ;;
 esac

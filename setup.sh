@@ -23,7 +23,7 @@ Linux*)
 	ln -sf $dir/i3/config ~/.i3/config
 	ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
 	sudo apt update
-	sudo apt install fasd
+	sudo apt install fasd direnv
 	;;
 Darwin*) ;;
 esac

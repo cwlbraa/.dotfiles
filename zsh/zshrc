@@ -81,7 +81,7 @@ antigen bundle command-not-found
 antigen bundle common-aliases
 antigen bundle copyfile
 antigen bundle copypath
-antigen bundle docker
+# antigen bundle docker # removed for rde
 antigen bundle fasd # for z
 antigen bundle fzf
 antigen bundle gcloud

@@ -23,7 +23,7 @@ Linux*)
 	ln -sf $dir/i3/config ~/.i3/config
 	ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
 	sudo apt update
-	sudo apt install -y fasd direnv gpg
+	sudo apt install -y fasd direnv gpg gettext ripgrep xsel bat htop
 	sudo mkdir -p /etc/apt/keyrings
 
 	# install eza from source

@@ -39,6 +39,8 @@ Linux*)
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
 	popd
+
+	nvim --headless "+Lazy! sync" +qa
 	;;
 Darwin*) ;;
 esac

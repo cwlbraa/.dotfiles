@@ -23,7 +23,7 @@ Linux*)
 	ln -sf $dir/i3/config ~/.i3/config
 	ln -sf $dir/i3/.i3status.conf ~/.i3status.conf
 	sudo apt update
-	sudo apt install fasd direnv
+	sudo apt install -y fasd direnv gpg
 	sudo mkdir -p /etc/apt/keyrings
 
 	# install eza from source
@@ -32,6 +32,13 @@ Linux*)
 	sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
 	sudo apt update
 	sudo apt install -y eza
+
+	git clone https://github.com/neovim/neovim ~/src/neovim
+
+	pushd ~/src/neovim
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
+	popd
 	;;
 Darwin*) ;;
 esac

@@ -4,7 +4,7 @@
 	frep = !git fre && git push --force-with-lease
 	cob = "!f() { git fetch -f --tags origin green-head && git checkout green-head -b cwlbraa/$1; }; f"
 	spinoff = "!f() { git fetch -f --tags origin green-head && git spinoff green-head -b cwlbraa/$1; }; f"
-	popen = !git fre && git push -u origin head && gh pr create -w 2>/dev/null
+	popen = !git fre && git push -u origin HEAD && gh pr create -w 2>/dev/null
 	st = status
 	ci = commit
 	br = branch
@@ -38,7 +38,6 @@
 	fsmonitor = true
 	untrackedCache = true
 	trustctime = false
-	pager = delta
 [github]
 	user = cwlbraa
 [url "git@github.com:"]
@@ -52,7 +51,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[interactive]
-	diffFilter = delta --color-only
-[add "interactive"]
-	useBuiltin = false
+[credential "https://github.com"]
+  helper = "/opt/sandboxd/sbin/wsenv git-credentials"
+  useHttpPath = true

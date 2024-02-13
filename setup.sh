@@ -45,7 +45,7 @@ Linux*)
 	sudo make install
 	popd
 
-	nvim --headless "+Lazy! sync" +qa
+	nvim --headless "+Lazy! restore" +qa
 
 	if [ -d "/usr/local/go" ]; then
 		ln -sf /usr/local/go/ /usr/lib/go/

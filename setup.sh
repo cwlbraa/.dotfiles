@@ -44,7 +44,7 @@ Linux*)
 	tar xf lazygit.tar.gz lazygit
 	sudo install lazygit /usr/local/bin
 
-	git clone https://github.com/neovim/neovim ~/src/neovim
+	git clone -b stable https://github.com/neovim/neovim ~/src/neovim
 
 	pushd ~/src/neovim
 	make CMAKE_BUILD_TYPE=RelWithDebInfo

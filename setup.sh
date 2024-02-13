@@ -39,10 +39,12 @@ Linux*)
 	sudo apt update
 	sudo apt install -y eza
 
+	pushd $(mktemp)
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 	tar xf lazygit.tar.gz lazygit
 	sudo install lazygit /usr/local/bin
+	popd
 
 	git clone -b stable https://github.com/neovim/neovim ~/src/neovim
 
@@ -54,10 +56,9 @@ Linux*)
 	nvim --headless "+Lazy! restore" +qa
 
 	if [ -d "/usr/local/go" ]; then
+		mkdir -p /usr/lib/
 		ln -sf /usr/local/go/ /usr/lib/go/
 	fi
-
-	go install github.com/jesseduffield/lazygit@latest
 	;;
 Darwin*) ;;
 esac

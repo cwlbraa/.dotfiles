@@ -10,10 +10,10 @@ git submodule update --init
 popd
 
 # link up git dotfiles to home dotfiles, using include if there's already a gitconfig file
-if ! grep "/.gitconfig" ~/.gitconfig; then
+if ! grep "/gitconfig" ~/.gitconfig; then
 	cat <<EOF >>~/.gitconfig
 [include]
-    path = $dir/.gitconfig
+    path = $dir/gitconfig
 EOF
 fi
 
@@ -49,7 +49,7 @@ Linux*)
 	git clone -b stable https://github.com/neovim/neovim ~/src/neovim
 
 	pushd ~/src/neovim
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
 	popd
 

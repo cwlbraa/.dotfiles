@@ -67,6 +67,8 @@ type pbpaste >/dev/null 2>&1 || alias pbpaste='xsel --clipboard --output'
 # elixir dev vars
 export DATABASE_HOST=localhost
 
+git config --global user.email "cwlbraa@users.noreply.github.com"
+
 ### antigen - zsh package manager {{{
 source $ZDOT_DIR/antigen/antigen.zsh
 

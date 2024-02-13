@@ -51,6 +51,3 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[credential "https://github.com"]
-  helper = "/opt/sandboxd/sbin/wsenv git-credentials"
-  useHttpPath = true

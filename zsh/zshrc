@@ -21,7 +21,7 @@ export ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 case "$(uname -s)" in
     Linux*)
       export GOROOT=/usr/lib/go/
-      export BROWSER=firefox.desktop
+      # export BROWSER=firefox.desktop
       ;;
     Darwin*)
       export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"

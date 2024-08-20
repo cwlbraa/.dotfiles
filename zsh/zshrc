@@ -20,7 +20,7 @@ export ZDOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # OS-specific
 case "$(uname -s)" in
     Linux*)
-      export GOROOT=/usr/lib/go/
+      # export GOROOT=/usr/lib/go/
       # export BROWSER=firefox.desktop
       ;;
     Darwin*)

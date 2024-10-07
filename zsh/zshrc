@@ -78,6 +78,7 @@ antigen bundle copypath
 # antigen bundle docker # removed for rde
 antigen bundle fasd # for z
 antigen bundle fzf
+antigen bundle Aloxaf/fzf-tab
 antigen bundle gcloud
 antigen bundle gitfast # no aliases, just fast bits for prompt integration
 antigen bundle golang
@@ -103,6 +104,7 @@ export FZF_CTRL_R_OPTS='--sort'
 
 eval "$(fasd --init auto)"
 eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=
 # eval "$(nodenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -115,3 +117,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias aic='aichat -e'

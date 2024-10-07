@@ -4,7 +4,20 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
   { "tpope/vim-commentary" },
-  { "FabijanZulj/blame.nvim", keys = { { "<leader>gb", "<cmd>ToggleBlame<cr>", desc = "blame" } } },
+  {
+    "FabijanZulj/blame.nvim",
+    lazy = false,
+    config = function()
+      require("blame").setup()
+    end,
+    keys = {
+      {
+        "<leader>gb",
+        "<cmd>BlameToggle<cr>",
+        desc = "blame",
+      },
+    },
+  },
   { "tpope/vim-rhubarb" },
   { "tpope/vim-vinegar" },
 

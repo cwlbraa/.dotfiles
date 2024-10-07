@@ -7,6 +7,6 @@ vim.o.autoread = true
 vim.o.autowriteall = true
 vim.o.expandtab = true
 vim.o.hidden = true
-vim.o.tabstop = 4
+-- vim.o.tabstop = 4
 vim.o.relativenumber = false
 vim.o.termguicolors = true

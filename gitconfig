@@ -1,10 +1,11 @@
 [alias]
 	bam = commit --amend --no-edit
-	fre = !git fetch -f --tags origin green-head:main && git rebase main
+	fre = !git fetch origin main && git rebase main
 	frep = !git fre && git push --force-with-lease
-	cob = "!f() { git fetch -f --tags origin green-head && git checkout green-head -b cwlbraa/$1; }; f"
-	spinoff = "!f() { git fetch -f --tags origin green-head && git spinoff green-head -b cwlbraa/$1; }; f"
-	popen = !git fre && git push -u origin HEAD && gh pr create -w 2>/dev/null
+	cob = "!f() { git fetch origin main && git checkout main -b cwlbraa/$1; }; f"
+	spinoff = "!f() { git fetch origin main && git spinoff main -b cwlbraa/$1; }; f"
+	popen = !git fre && git push -u cwlbraa HEAD && git fopen
+    fopen = !gh pr create --repo $(git remote get-url origin) --head cwlbraa:$(git rev-parse --abbrev-ref HEAD) --web
 	st = status
 	ci = commit
 	br = branch

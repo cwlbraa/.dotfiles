@@ -54,6 +54,7 @@ alias venv='source venv/bin/activate'
 alias gst='git status'
 alias gapa='git add -p'
 alias gcpa='git checkout -p'
+alias cat='bat'
 fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'

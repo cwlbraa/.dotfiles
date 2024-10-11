@@ -1,9 +1,18 @@
+local Util = require("lazyvim.util")
+
 return {
   { "akinsho/bufferline.nvim", enabled = false },
-  { "folke/noice.nvim", enabled = false },
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
   { "tpope/vim-commentary" },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        view = "cmdline",
+      },
+    },
+  },
   {
     "FabijanZulj/blame.nvim",
     lazy = false,
@@ -41,6 +50,21 @@ return {
         "vim",
         "yaml",
       },
+    },
+  },
+  -- add telescope-fzf-native
+  {
+    "telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+    keys = {
+      { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
     },
   },
 }

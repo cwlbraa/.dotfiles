@@ -21,7 +21,8 @@
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]
 	name = Connor Braa
-	email = cwlbraa@users.noreply.github.com
+	email = connor@dagger.io
+	signingKey = /Users/braa/.ssh/id_rsa.pub
 [init]
 	templatedir = ~/.dotfiles/git_template
 [merge]
@@ -52,3 +53,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

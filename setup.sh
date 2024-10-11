@@ -9,12 +9,16 @@ pushd $dir
 git submodule update --init
 popd
 
-# link up git dotfiles to home dotfiles, using include if there's already a gitconfig file
-if ! grep "/gitconfig" ~/.gitconfig; then
-    cat <<EOF >>~/.gitconfig
+# link up git dotfiles to home dotfiles
+if [ ! -f ~/.gitconfig ]; then
+    ln -sf $dir/gitconfig ~/.gitconfig
+else
+    if ! grep "/gitconfig" ~/.gitconfig; then
+        cat <<EOF >>~/.gitconfig
 [include]
     path = $dir/gitconfig
 EOF
+    fi
 fi
 
 ln -sf $dir/zsh/zshrc ~/.zshrc

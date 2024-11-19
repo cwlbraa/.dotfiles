@@ -1,13 +1,12 @@
 [alias]
 	bam = commit --amend --no-edit
-	fre = !git fetch origin main && git rebase main
+	fre = !git fetch origin main && git rebase origin/main
 	frep = !git fre && git push --force-with-lease
-	cob = "!f() { git fetch origin main && git checkout main -b cwlbraa/$1; }; f"
-	spinoff = "!f() { git fetch origin main && git spinoff main -b cwlbraa/$1; }; f"
+	cob = "!f() { git fetch origin main && git checkout origin/main -b $1; }; f"
 	popen = !git fre && git push -u cwlbraa HEAD && git fopen
     fopen = !gh pr create --repo $(git remote get-url origin) --head cwlbraa:$(git rev-parse --abbrev-ref HEAD) --web
 	st = status
-	ci = commit
+	ci = commit -s
 	br = branch
 	co = checkout
 	cp = cherry-pick
@@ -46,6 +45,7 @@
 	insteadOf = https://github.com
 [push]
 	default = simple
+	autoSetupRemote = true
 [credential]
 	helper = osxkeychain
 [filter "lfs"]
@@ -57,3 +57,5 @@
 	format = ssh
 [commit]
 	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = /Users/braa/.allowed_signers

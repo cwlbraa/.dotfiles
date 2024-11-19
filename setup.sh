@@ -13,13 +13,14 @@ popd
 if [ ! -f ~/.gitconfig ]; then
     ln -sf $dir/gitconfig ~/.gitconfig
 else
-    if ! grep "/gitconfig" ~/.gitconfig; then
+    if [ ! -L ~/.gitconfig ] && ! grep "/gitconfig" ~/.gitconfig; then
         cat <<EOF >>~/.gitconfig
 [include]
     path = $dir/gitconfig
 EOF
     fi
 fi
+touch ~/.allowed_signers
 
 ln -sf $dir/zsh/zshrc ~/.zshrc
 ln -sf $dir/Xresources ~/.Xresources

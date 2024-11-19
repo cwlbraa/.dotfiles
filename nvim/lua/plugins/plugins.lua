@@ -1,8 +1,22 @@
 local Util = require("lazyvim.util")
 
 return {
-  { "akinsho/bufferline.nvim", enabled = false },
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = true },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = true },
+  -- {
+  --   "ray-x/go.nvim",
+  --   requires = { -- optional packages
+  --     "ray-x/guihua.lua",
+  --     "neovim/nvim-lspconfig",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   config = function()
+  --     require("go").setup()
+  --   end,
+  --   event = { "CmdlineEnter" },
+  --   ft = { "go", "gomod" },
+  --   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  -- },
 
   { "tpope/vim-commentary" },
   {
@@ -28,8 +42,15 @@ return {
     },
   },
   { "tpope/vim-rhubarb" },
-  { "tpope/vim-vinegar" },
-
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup()
+    end,
+    keys = {
+      { "-", "<CMD>Oil<CR>", mode = { "n" }, desc = "file explorer" },
+    },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {

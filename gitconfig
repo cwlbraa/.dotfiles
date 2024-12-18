@@ -3,7 +3,7 @@
 	fre = !git fetch origin main && git rebase origin/main
 	frep = !git fre && git push --force-with-lease
 	cob = "!f() { git fetch origin main && git checkout origin/main -b $1; }; f"
-	popen = !git fre && git push -u cwlbraa HEAD && gh pr create --repo $(git remote get-url origin) --head cwlbraa:$(git rev-parse --abbrev-ref HEAD) --web
+	fopen = !git fre && git push -u cwlbraa HEAD && gh pr create --repo $(git remote get-url origin) --head cwlbraa:$(git rev-parse --abbrev-ref HEAD) --web
     bopen = !git fre && git push -u origin HEAD && gh pr create --web
 	st = status
 	ci = commit -s
@@ -24,6 +24,7 @@
 	signingKey = /Users/braa/.ssh/id_rsa.pub
 [init]
 	templatedir = ~/.dotfiles/git_template
+	defaultBranch = main
 [merge]
     tool = intellij
 	conflictstyle = diff3

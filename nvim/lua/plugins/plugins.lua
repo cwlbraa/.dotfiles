@@ -3,21 +3,6 @@ local Util = require("lazyvim.util")
 return {
   { "akinsho/bufferline.nvim", enabled = true },
   { "nvim-neo-tree/neo-tree.nvim", enabled = true },
-  -- {
-  --   "ray-x/go.nvim",
-  --   requires = { -- optional packages
-  --     "ray-x/guihua.lua",
-  --     "neovim/nvim-lspconfig",
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   config = function()
-  --     require("go").setup()
-  --   end,
-  --   event = { "CmdlineEnter" },
-  --   ft = { "go", "gomod" },
-  --   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-  -- },
-
   { "tpope/vim-commentary" },
   {
     "folke/noice.nvim",
@@ -73,21 +58,6 @@ return {
         "vim",
         "yaml",
       },
-    },
-  },
-  -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-    keys = {
-      { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
     },
   },
 }

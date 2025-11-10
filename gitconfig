@@ -20,8 +20,8 @@
 	rl = log -g --date=iso --abbrev-commit --pretty=format:'%h %Cblue%gd%Creset %Creset%<(25,trunc)%ae %C(yellow)%<(80,trunc)%s ==> %<(80,trunc) %Cgreen%gs%Creset'
 [user]
 	name = Connor Braa
-	email = connor@dagger.io
-	signingKey = /Users/braa/.ssh/id_rsa.pub
+	email = cwlbraa@langchain.dev
+	signingKey = /Users/cwlbraa/.ssh/id_ed25519.pub
 [init]
 	templatedir = ~/.dotfiles/git_template
 	defaultBranch = main

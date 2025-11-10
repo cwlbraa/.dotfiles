@@ -28,6 +28,8 @@ ln -sf $dir/nvim ~/.config/
 ln -sf $dir/.ideavimrc ~/.ideavimrc
 ln -sf $dir/.p10k.zsh ~/.p10k.zsh
 ln -sf $dir/.ripgreprc ~/.ripgreprc
+ln -sf $dir/zed/settings.json ~/.config/zed/settings.json
+ln -sf $dir/zed/keymap.json ~/.config/zed/keymap.json
 
 case "$(uname -s)" in
 Linux*)

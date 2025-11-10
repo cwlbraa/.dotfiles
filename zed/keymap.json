@@ -1,0 +1,56 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace && !Terminal",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-e": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "cmd-e": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "TabSwitcher",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-i": "menu::SelectPrevious",
+      "ctrl-o": "menu::SelectNext",
+      "cmd-k": "menu::SelectPrevious",
+      "cmd-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-r": "editor::SpawnNearestTask"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "-": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g r": "editor::FindAllReferences"
+    }
+  }
+]

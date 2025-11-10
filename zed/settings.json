@@ -1,0 +1,209 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "tab_bar": { "show": false },
+  "context_servers": {
+    "container-use-mcp": {
+      "source": "extension",
+      "settings": {
+        "cu_path": "/Users/braa/go/bin/container-use"
+      }
+    }
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "buildFlags": ["-tags=linux"],
+        "usePlaceholders": false,
+        "env": {
+          "GOOS": "linux"
+        }
+      }
+    }
+  },
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
+    },
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "container-use-write": {
+        "name": "container-use write",
+        "tools": {
+          "now": true,
+          "fetch": true,
+          "find_path": false,
+          "delete_path": false,
+          "create_directory": false,
+          "list_directory": false,
+          "copy_path": false,
+          "diagnostics": false,
+          "thinking": true,
+          "read_file": false,
+          "open": false,
+          "move_path": false,
+          "grep": false,
+          "edit_file": false,
+          "terminal": false
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "container-use-mcp": {
+            "tools": {
+              "environment_update_metadata": true,
+              "environment_config": true,
+              "environment_create": true,
+              "environment_add_service": true,
+              "environment_update": true,
+              "environment_run_cmd": true,
+              "environment_open": true,
+              "environment_file_write": true,
+              "environment_file_read": true,
+              "environment_file_list": true,
+              "environment_file_delete": true,
+              "environment_checkpoint": true
+            }
+          },
+          "container-use": {
+            "tools": {
+              "environment_checkpoint": true,
+              "environment_file_delete": true,
+              "environment_file_list": true,
+              "environment_file_read": true,
+              "environment_file_write": true,
+              "environment_run_cmd": true,
+              "environment_update": true,
+              "environment_open": true
+            }
+          }
+        }
+      },
+      "write": {
+        "name": "Write",
+        "tools": {
+          "fetch": true,
+          "find_path": true,
+          "delete_path": true,
+          "create_directory": true,
+          "list_directory": true,
+          "copy_path": true,
+          "diagnostics": true,
+          "thinking": true,
+          "read_file": true,
+          "open": true,
+          "move_path": true,
+          "grep": true,
+          "edit_file": true,
+          "terminal": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+          "container-use-mcp": {
+            "tools": {
+              "environment_update_metadata": false,
+              "environment_config": false,
+              "environment_file_edit": false,
+              "environment_update": false,
+              "environment_run_cmd": false,
+              "environment_open": false,
+              "environment_file_write": false,
+              "environment_file_read": false,
+              "environment_file_list": false,
+              "environment_file_delete": false,
+              "environment_create": false,
+              "environment_checkpoint": false,
+              "environment_add_service": false
+            }
+          }
+        }
+      },
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true,
+          "terminal": false
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      },
+      "dagger": {
+        "name": "Dagger",
+        "tools": {
+          "terminal": false,
+          "open": true,
+          "read_file": true,
+          "thinking": true,
+          "copy_path": true,
+          "diagnostics": true,
+          "delete_path": false,
+          "edit_file": true,
+          "find_path": true,
+          "grep": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+          "dagger": {
+            "tools": {}
+          }
+        }
+      }
+    },
+    "default_profile": "write",
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
+    },
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+    // "background_coloring": "indent_aware"
+  },
+  "auto_signature_help": true,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "vim_mode": true,
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16,
+  "buffer_font_size": 12,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Light"
+  },
+  "terminal": {
+    // Set the terminal's font family. If this option is not included,
+    // the terminal will default to matching the buffer's font family.
+    "dock": "right",
+    "font_family": "Hack Nerd Font"
+    // Set the terminal's font fallbacks. If this option is not included,
+    // the terminal will default to matching the buffer's font fallbacks.
+    // This will be merged with the platform's default font fallbacks
+    // "font_fallbacks": ["ZedMono Nerd Font Mono"]
+  },
+  "autosave": "on_window_change"
+  // "ui_font_family": "Hack",
+  // "buffer_font_weight": 400,
+  // "buffer_font_family": "Hack"
+}

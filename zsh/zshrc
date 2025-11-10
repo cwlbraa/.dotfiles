@@ -3,9 +3,14 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 # source etc profile for wide compatibility with other unixes . /etc/profile
 # get directory this script is in
@@ -29,17 +34,20 @@ case "$(uname -s)" in
     ;;
 esac
 
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/lib/go/bin:$PATH
-
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/src/dagger/hack/:$PATH
+export PATH="$(brew --prefix rustup)/bin:$PATH"
 export EDITOR="nvim"
 
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/lib/go/bin:$PATH
+
+export PATH=$HOME/.cargo/bin/:$PATH
 
 alias vim="nvim"
 export EDITOR="nvim"        # $EDITOR opens in terminal
@@ -55,6 +63,8 @@ alias gst='git status'
 alias gapa='git add -p'
 alias gcpa='git checkout -p'
 alias cat='bat'
+alias prune='dagger core engine local-cache prune'
+alias aic='aichat -e'
 fswatch() { while inotifywait --exclude .swp -e modify -r .; do $@; done; }
 
 type pbcopy >/dev/null 2>&1 || alias pbcopy='xsel --clipboard --input'
@@ -96,14 +106,16 @@ antigen apply
 
 unsetopt HIST_VERIFY
 
+# disable alphabetical sorting of fzf tab completions
+zstyle ':completion:*' sort false
+
 # setup for external tools
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_R_OPTS='--sort'
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 eval "$(fasd --init auto)"
-eval "$(direnv hook zsh)"
-export DIRENV_LOG_FORMAT=
 # eval "$(nodenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

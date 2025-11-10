@@ -27,6 +27,7 @@ ln -sf $dir/Xresources ~/.Xresources
 ln -sf $dir/nvim ~/.config/
 ln -sf $dir/.ideavimrc ~/.ideavimrc
 ln -sf $dir/.p10k.zsh ~/.p10k.zsh
+ln -sf $dir/.ripgreprc ~/.ripgreprc
 
 case "$(uname -s)" in
 Linux*)

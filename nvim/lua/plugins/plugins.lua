@@ -12,6 +12,27 @@ return {
       },
     },
   },
+  -- {
+  --   "chrisgrieser/nvim-lsp-endhints",
+  --   event = "LspAttach",
+  --   lazy = false,
+  --   config = function()
+  --     require("lsp-endhints").setup({
+  --       label = {
+  --         truncateAtChars = 100,
+  --       },
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   "felpafel/inlay-hint.nvim",
+  --   event = "LspAttach",
+  --   config = function()
+  --     require("inlay-hint").setup({
+  --       virt_text_pos = "right_align",
+  --     })
+  --   end,
+  -- },
   {
     "FabijanZulj/blame.nvim",
     lazy = false,
@@ -57,6 +78,21 @@ return {
         "typescript",
         "vim",
         "yaml",
+      },
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      scroll = {},
+    },
+  },
+  { "HiPhish/rainbow-delimiters.nvim" },
+  {
+    "Saghen/blink.cmp",
+    opts = {
+      keymap = {
+        ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
       },
     },
   },
